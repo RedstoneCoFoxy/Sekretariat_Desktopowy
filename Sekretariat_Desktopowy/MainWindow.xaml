@@ -9,42 +9,41 @@
     <Grid>
         <TabControl>
             <TabItem>
-                
                 <TabItem.Header>
                     Widok
                 </TabItem.Header>
                 <Grid>
-                <Menu Margin="0,0,0,363" >
-                    <MenuItem HorizontalAlignment="Left" VerticalAlignment="Top">
-                        <MenuItem.Header>
-                            Plik
-                        </MenuItem.Header>
-                        <MenuItem>
+                    <Menu Margin="0,0,0,363" >
+                        <MenuItem HorizontalAlignment="Left" VerticalAlignment="Top">
                             <MenuItem.Header>
-                                Wczytaj
+                                Plik
                             </MenuItem.Header>
+                            <MenuItem>
+                                <MenuItem.Header>
+                                    Wczytaj
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem>
+                                <MenuItem.Header>
+                                    Zapisz
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem>
+                                <MenuItem.Header>
+                                    Sortuj
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem>
+                                <MenuItem.Header>
+                                    Szukaj
+                                </MenuItem.Header>
+                            </MenuItem>
                         </MenuItem>
-                        <MenuItem>
-                            <MenuItem.Header>
-                                Zapisz
-                            </MenuItem.Header>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItem.Header>
-                                Sortuj
-                            </MenuItem.Header>
-                        </MenuItem>
-                        <MenuItem>
-                            <MenuItem.Header>
-                                Szukaj
-                            </MenuItem.Header>
-                        </MenuItem>
-                    </MenuItem>
-                </Menu>
+                    </Menu>
                     <ScrollViewer>
-                    <TextBlock Margin="0,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="363" Width="786" TextWrapping="Wrap" FontSize="20">
-                        fgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgds
-                    </TextBlock>
+                        <TextBlock Margin="0,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="363" Width="786" TextWrapping="Wrap" FontSize="20">
+
+                        </TextBlock>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
@@ -52,8 +51,75 @@
                 <TabItem.Header>
                     Rekord
                 </TabItem.Header>
+                <TabControl>
+                    <TabItem>
+                        <TabItem.Header>
+                            Uczeń
+                        </TabItem.Header>
+                        <Grid>
+                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
+                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
+                                <ListBoxItem>/</ListBoxItem>
+                                <ListBoxItem>M</ListBoxItem>
+                                <ListBoxItem>K</ListBoxItem>
+                            </ListBox>
+                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
+                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            Nauczyciel
+                        </TabItem.Header>
+                        <Grid>
+                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
+                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
+                                <ListBoxItem>/</ListBoxItem>
+                                <ListBoxItem>M</ListBoxItem>
+                                <ListBoxItem>K</ListBoxItem>
+                            </ListBox>
+                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
+                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                        </Grid>
+                    </TabItem>
+                    <TabItem>
+                        <TabItem.Header>
+                            Pracownik
+                        </TabItem.Header>
+                        <Grid>
+                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
+                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
+                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
+                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
+                                <ListBoxItem>/</ListBoxItem>
+                                <ListBoxItem>M</ListBoxItem>
+                                <ListBoxItem>K</ListBoxItem>
+                            </ListBox>
+                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
+                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
             </TabItem>
-            
         </TabControl>
     </Grid>
 </Window>

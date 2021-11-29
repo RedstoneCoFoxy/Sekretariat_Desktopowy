@@ -57,21 +57,18 @@
                             Uczeń
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
-                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
-                                <ListBoxItem>/</ListBoxItem>
-                                <ListBoxItem>M</ListBoxItem>
-                                <ListBoxItem>K</ListBoxItem>
-                            </ListBox>
-                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
-                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="pies2.jpg" Stretch="Fill"/>
                         </Grid>
                     </TabItem>
                     <TabItem>
@@ -79,21 +76,18 @@
                             Nauczyciel
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
-                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
-                                <ListBoxItem>/</ListBoxItem>
-                                <ListBoxItem>M</ListBoxItem>
-                                <ListBoxItem>K</ListBoxItem>
-                            </ListBox>
-                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
-                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="pies2.jpg" Stretch="Fill"/>
                         </Grid>
                     </TabItem>
                     <TabItem>
@@ -101,21 +95,18 @@
                             Pracownik
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,5,595,330" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,5,405,330" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,35,595,295" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,35,405,295" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <TextBox Margin="10,70,595,260" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,70,405,260" Height="25" Width="175" Background="#FFEFE9FF"/>
-                            <DatePicker Margin="10,110,595,228" Height="25" Width="175" Background="#FFEFE9FF" />
-                            <TextBox Margin="200,110,360,228" Height="25" Background="#FFEFE9FF"/>
-                            <ListBox Margin="10,146,720,192" Height="25" Background="#FFEFE9FF">
-                                <ListBoxItem>/</ListBoxItem>
-                                <ListBoxItem>M</ListBoxItem>
-                                <ListBoxItem>K</ListBoxItem>
-                            </ListBox>
-                            <TextBox Margin="75,146,405,192" Height="25" Background="#FFEFE9FF"/>
-                            <Image HorizontalAlignment="Left" Height="265" Margin="475,10,0,0" VerticalAlignment="Top" Width="265"/>
+                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="pies2.jpg" Stretch="Fill"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

@@ -7,6 +7,53 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <TabControl>
+            <TabItem>
+                
+                <TabItem.Header>
+                    Widok
+                </TabItem.Header>
+                <Grid>
+                <Menu Margin="0,0,0,363" >
+                    <MenuItem HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <MenuItem.Header>
+                            Plik
+                        </MenuItem.Header>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                Wczytaj
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                Zapisz
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                Sortuj
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem>
+                            <MenuItem.Header>
+                                Szukaj
+                            </MenuItem.Header>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+                    <ScrollViewer>
+                    <TextBlock Margin="0,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="363" Width="786" TextWrapping="Wrap" FontSize="20">
+                        fgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgdsfgdgdgsfghdfsgdfgdsgfdgdsfgds
+                    </TextBlock>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    Rekord
+                </TabItem.Header>
+            </TabItem>
+            
+        </TabControl>
     </Grid>
 </Window>

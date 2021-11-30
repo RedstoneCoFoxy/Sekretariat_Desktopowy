@@ -8,32 +8,32 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
-            <TabItem>
+            <TabItem x:Name="Tab_Item_Widok">
                 <TabItem.Header>
                     Widok
                 </TabItem.Header>
                 <Grid>
                     <Menu Margin="0,0,0,363" >
-                        <MenuItem HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <MenuItem x:Name="Menu_Plik" HorizontalAlignment="Left" VerticalAlignment="Top">
                             <MenuItem.Header>
                                 Plik
                             </MenuItem.Header>
-                            <MenuItem>
+                            <MenuItem x:Name="Menu_Plik_Wczytaj">
                                 <MenuItem.Header>
                                     Wczytaj
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem x:Name="Menu_Plik_Zapisz">
                                 <MenuItem.Header>
                                     Zapisz
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem x:Name="Menu_Plik_Sortuj">
                                 <MenuItem.Header>
                                     Sortuj
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem>
+                            <MenuItem x:Name="Menu_Plik_Szukaj">
                                 <MenuItem.Header>
                                     Szukaj
                                 </MenuItem.Header>
@@ -41,86 +41,86 @@
                         </MenuItem>
                     </Menu>
                     <ScrollViewer>
-                        <TextBlock Margin="0,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="363" Width="786" TextWrapping="Wrap" FontSize="20">
+                        <TextBlock x:Name="Tab_Item_Widok_TextBox" Margin="0,28,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="363" Width="786" TextWrapping="Wrap" FontSize="20">
 
                         </TextBlock>
                     </ScrollViewer>
                 </Grid>
             </TabItem>
-            <TabItem>
+            <TabItem x:Name="Tab_Item_Rekord">
                 <TabItem.Header>
                     Rekord
                 </TabItem.Header>
                 <TabControl>
-                    <TabItem>
+                    <TabItem x:Name="Tab_Item_Rekord_Uczen">
                         <TabItem.Header>
                             Uczeń
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
-                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
-                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
+                            <TextBox x:Name="Uczen_Imie" Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_DrugieImie" Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_Nazwisko" Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_NazwiskoPaniejskie" Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_ImieMatki" Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_ImieOjca" Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="Uczen_DataUrodzenia" Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_Pesel" Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton x:Name="Uczen_PlecM" GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton x:Name="Uczen_PlecK" GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button x:Name="Uczen_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image x:Name="Uczen_Zdjecie" HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
 
-                            <TextBox Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_Klasa" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Uczen_Grupy" Margin="190,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
                         </Grid>
                     </TabItem>
-                    <TabItem>
+                    <TabItem x:Name="Tab_Item_Rekord_Nauczyciel">
                         <TabItem.Header>
                             Nauczyciel
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
-                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
-                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
+                            <TextBox x:Name="Nauczyciel_Imie" Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_DrugieImie" Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_Nazwisko" Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_NazwiskoPaniejskie" Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_ImieMatki" Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_ImieOjca" Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="Nauczyciel_DataUrodzenia" Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_Pesel" Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton x:Name="Nauczyciel_PlecM" GroupName="plec_N" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton x:Name="Nauczyciel_PlecK" GroupName="plec_N" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button x:Name="Nauczyciel_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image x:Name="Nauczyciel_Zdjecia" HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
 
-                            <TextBox Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,187,0,0" Height="25" Width="190" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,217,0,0" Height="25" Width="190" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <DatePicker Margin="220,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_WychowawcaKlasy" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_PrzedmiotyNauczane" Margin="190,187,0,0" Height="25" Width="190" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Nauczyciel_Zajecia" Margin="10,217,0,0" Height="25" Width="190" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="Nauczyciel_DataZatrudnienia" Margin="220,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
                         </Grid>
                     </TabItem>
-                    <TabItem>
+                    <TabItem x:Name="Tab_Item_Rekord_Pracownik">
                         <TabItem.Header>
                             Pracownik
                         </TabItem.Header>
                         <Grid>
-                            <TextBox Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <DatePicker Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <RadioButton GroupName="plec_U" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
-                            <RadioButton GroupName="plec_U" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
-                            <Button Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <Image HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
+                            <TextBox x:Name="Pracownik_Imie" Margin="10,7,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_DrugieImie" Margin="190,7,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_Nazwisko" Margin="10,39,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_NazwiskoPaniejskie" Margin="190,39,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_ImieMatki" Margin="10,74,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_ImieOjca" Margin="190,74,415,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="Pracownik_DataUrodzenia" Margin="10,110,595,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_Pesel" Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <RadioButton x:Name="Pracownik_PlecM" GroupName="plec_P" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
+                            <RadioButton x:Name="Pracownik_PlecK" GroupName="plec_P" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
+                            <Button x:Name="Pracownik_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <Image x:Name="Pracownik_Zdjecia" HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Fill"/>
 
-                            <TextBox Margin="10,187,0,0" Height="25" Width="140" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <TextBox Margin="190,187,0,0" Height="25" Width="240" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-                            <DatePicker Margin="10,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_Etat" Margin="10,187,0,0" Height="25" Width="140" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <TextBox x:Name="Pracownik_Opis" Margin="190,187,0,0" Height="25" Width="240" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                            <DatePicker x:Name="Pracownik_DataZatrudnienia" Margin="10,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                         </Grid>
                     </TabItem>
                 </TabControl>

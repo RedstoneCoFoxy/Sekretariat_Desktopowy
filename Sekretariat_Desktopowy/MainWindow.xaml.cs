@@ -56,36 +56,44 @@ namespace Sekretariat_Desktopowy
                 Uczen_Imie.Foreground = Brushes.Red;
                 Check = false;
             }
+            else { Uczen_Imie.Foreground = Brushes.Black; }
             if (Uczen_Nazwisko.Text == " " || Uczen_Nazwisko.Text == "Nazwisko")
             {
                 Uczen_Nazwisko.Foreground = Brushes.Red;
                 Check = false;
             }
+            else { Uczen_Nazwisko.Foreground = Brushes.Black; }
             if (Uczen_DataUrodzenia.SelectedDate >= DateTime.Now || Uczen_DataUrodzenia.SelectedDate == null)
             {
                 Uczen_DataUrodzenia.Foreground = Brushes.Red;
                 Check = false;
             }
-            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length != 11)
+            else { Uczen_DataUrodzenia.Foreground = Brushes.Black; }
+            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length != 11 || Uczen_Pesel.Text.All(char.IsDigit)!=true)
             {
                 Uczen_Pesel.Foreground = Brushes.Red;
                 Check = false;
             }
-            if (Uczen_PlecM.IsChecked == false || Uczen_PlecK.IsChecked == false)
+            else { Uczen_Pesel.Foreground = Brushes.Black; }
+
+            if (Uczen_PlecM.IsChecked == false && Uczen_PlecK.IsChecked == false)
             {
                 Uczen_PlecM.Foreground = Brushes.Red;
                 Uczen_PlecK.Foreground = Brushes.Red;
                 Check = false;
             }
+            else {Uczen_PlecM.Foreground = Brushes.Black;Uczen_PlecK.Foreground = Brushes.Black;}
+
             if (Uczen_Klasa.Text == " " || Uczen_Klasa.Text == "Klasa")
             {
                 Uczen_Klasa.Foreground = Brushes.Red;
                 Check = false;
             }
+            else { Uczen_Klasa.Foreground = Brushes.Black; }
             //Wiadomość jesli nie
             if (Check == false)
             {
-                Uczen_ErrorLabel.Content = "Brakujące lub nie poprawne dane !!!";
+                Uczen_ErrorLabel.Content = "Brakujące lub niepoprawne dane !!!";
             }
             //Jesli Okej to mozna deklarowac zmienną
             //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
@@ -93,36 +101,38 @@ namespace Sekretariat_Desktopowy
             {
                 Uczen_ErrorLabel.Content = "";
                 Uczen[] TempTableUczen = new Uczen[1];
+                Uczen Temp = new Uczen();
                 string Plec = "";
                 if (Uczen_PlecM.IsChecked==true) { Plec = "Mężczyzna"; };
                 if (Uczen_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
                 Data = Uczen_DataUrodzenia.ToString();
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                TempTableUczen[0].Imie = Uczen_Imie.Text;
-                TempTableUczen[0].Nazwisko = Uczen_Nazwisko.Text;
-                TempTableUczen[0].DataUrodzenia = Data;
-                TempTableUczen[0].Pesel = Uczen_Pesel.Text;
-                TempTableUczen[0].Plec = Plec;
-                TempTableUczen[0].Klasa = Uczen_Klasa.Text;
-                TempTableUczen[0].Zdjecie = UczenWybraneZdjecie;
+                Temp.Imie = Uczen_Imie.Text;
+                Temp.Nazwisko = Uczen_Nazwisko.Text;
+                Temp.DataUrodzenia = Data;
+                Temp.Pesel = Uczen_Pesel.Text;
+                Temp.Plec = Plec;
+                Temp.Klasa = Uczen_Klasa.Text;
+                Temp.Zdjecie = UczenWybraneZdjecie;
 
-                if (Uczen_DrugieImie.Text=="Drugie Imie") { TempTableUczen[0].DrugieImie = " "; } 
-                else { TempTableUczen[0].DrugieImie = Uczen_DrugieImie.Text; };
+                if (Uczen_DrugieImie.Text=="Drugie Imie") { Temp.DrugieImie = " "; } 
+                else { Temp.DrugieImie = Uczen_DrugieImie.Text; };
 
-                if (Uczen_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { TempTableUczen[0].NazwiskoPaniejskie = " "; }
-                else { TempTableUczen[0].NazwiskoPaniejskie = Uczen_NazwiskoPaniejskie.Text; };
+                if (Uczen_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { Temp.NazwiskoPaniejskie = " "; }
+                else { Temp.NazwiskoPaniejskie = Uczen_NazwiskoPaniejskie.Text; };
 
-                if (Uczen_ImieOjca.Text == "Imie Ojca") { TempTableUczen[0].ImieOjca = " "; }
-                else { TempTableUczen[0].ImieOjca = Uczen_ImieOjca.Text; };
+                if (Uczen_ImieOjca.Text == "Imie Ojca") { Temp.ImieOjca = " "; }
+                else { Temp.ImieOjca = Uczen_ImieOjca.Text; };
 
-                if (Uczen_ImieMatki.Text == "Imie Matki") { TempTableUczen[0].ImieMatki = " "; }
-                else { TempTableUczen[0].ImieMatki = Uczen_ImieMatki.Text; };
+                if (Uczen_ImieMatki.Text == "Imie Matki") { Temp.ImieMatki = " "; }
+                else { Temp.ImieMatki = Uczen_ImieMatki.Text; };
 
-                if (Uczen_Grupy.Text == "Grupy") { TempTableUczen[0].Grupy = " "; }
-                else { TempTableUczen[0].Grupy = Uczen_Grupy.Text; };
+                if (Uczen_Grupy.Text == "Grupy") { Temp.Grupy = " "; }
+                else { Temp.Grupy = Uczen_Grupy.Text; };
 
                 //Łączenie tymczasowej tabeli z tabelą z "bazy danych"
+                TempTableUczen[0] = Temp;
                 TableUczen = TableUczen.Concat(TempTableUczen).ToArray();
 
                 //Wyczyszczenie Pól tekstowych i powiadomienie uzytkownika

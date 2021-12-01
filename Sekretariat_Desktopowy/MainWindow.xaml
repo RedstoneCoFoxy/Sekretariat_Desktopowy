@@ -76,7 +76,7 @@
                             <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 Stwórz
                             </Button>
-                            <Label x:Name="Uczen_ErrorLabel" Width="250" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
+                            <Label x:Name="Uczen_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>
                     <TabItem x:Name="Tab_Item_Rekord_Nauczyciel" Background="#FFEFE9FF">

@@ -21,8 +21,9 @@ namespace Sekretariat_Desktopowy
         public MainWindow()
         {
             InitializeComponent();
+            Update_Widok();
         }
-        public class Uczen{
+        public class Uczen {
 
             public string Rodzaj = "U";
 
@@ -40,11 +41,21 @@ namespace Sekretariat_Desktopowy
             public string Klasa = "";
             public string Grupy = "";
         }
-        string UczenWybraneZdjecie="";
-        //Tworzenie 3 table które składają się na baze, są narazie puste poniewaz potem dane są dodawane funkcją .concat
+        string UczenWybraneZdjecie = "";
+        //Tworzenie 3 table które składają się na "baze", są narazie puste poniewaz potem dane są dodawane funkcją .concat
         Uczen[] TableUczen = new Uczen[0];
         //Nauczyciel[] TableUczen = new Nauczyciel[0];
         //Pracownik[] TableUczen = new Pracownik[0];
+
+        //Uaktualnia Widok "Bazy"
+        public void Update_Widok()
+        {
+            Tab_Item_Widok_TextBox.Text = "";
+            if (TableUczen.Length == 0) { Tab_Item_Widok_TextBox.Text = "Brak rekordów Uczniów"; };
+            for (int i = 0; i < TableUczen.Length; i++) { 
+                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableUczen[i].Imie +" " + TableUczen[i].DrugieImie + " " + TableUczen[i].Nazwisko + " " + TableUczen[i].NazwiskoPaniejskie + " " + TableUczen[i].ImieOjca + " " + TableUczen[i].ImieMatki + " " + TableUczen[i].DataUrodzenia + " " + TableUczen[i].Pesel + " " + TableUczen[i].Plec + " " + TableUczen[i].Klasa + " " + TableUczen[i].Grupy + "\n";
+            }
+        }    
         private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
         {
 
@@ -137,19 +148,21 @@ namespace Sekretariat_Desktopowy
 
                 //Wyczyszczenie Pól tekstowych i powiadomienie uzytkownika
                 Uczen_ErrorLabel.Content = "Pomyślnie stworzono";
-                Uczen_Imie.Text = "";
-                Uczen_DrugieImie.Text = "";
-                Uczen_Nazwisko.Text = "";
-                Uczen_NazwiskoPaniejskie.Text = "";
-                Uczen_ImieOjca.Text = "";
-                Uczen_ImieMatki.Text = "";
-                Uczen_Pesel.Text = "";
-                Uczen_Klasa.Text = "";
-                Uczen_Grupy.Text = "";
+                Uczen_Imie.Text = "Imie";
+                Uczen_DrugieImie.Text = "Drugie Imie";
+                Uczen_Nazwisko.Text = "Nazwisko";
+                Uczen_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
+                Uczen_ImieOjca.Text = "Imie Matki";
+                Uczen_ImieMatki.Text = "Imie Ojca";
+                Uczen_Pesel.Text = "Pesel";
+                Uczen_Klasa.Text = "Klasa";
+                Uczen_Grupy.Text = "Grupy";
                 UczenWybraneZdjecie = "";
                 Uczen_PlecM.IsChecked = false;
                 Uczen_PlecK.IsChecked = false;
                 Uczen_DataUrodzenia.SelectedDate = null;
+
+                Update_Widok();
             }
         }
         private void Uczen_WyborZdjecia_Click(object sender, RoutedEventArgs e)

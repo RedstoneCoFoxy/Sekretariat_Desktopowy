@@ -21,7 +21,7 @@ namespace Sekretariat_Desktopowy
         {
             InitializeComponent();
         }
-        /*public class Uczen{
+        public class Uczen{
             string Imie="";
             string DrugieImie = "";
             string Nazwisko = "";
@@ -33,12 +33,14 @@ namespace Sekretariat_Desktopowy
 
             string Klasa = "";
             string Grupy = "";
-        }*/
+        }
 
-        private void Uczen_StworzRekord_Click(object sender, RoutedEventArgs e)
+        private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
         {
+
+            //Jeden Wielki Check czy pola się zgadzają
             Uczen_ErrorLabel.Content = "fgdfgdfg";
-            bool Check=true;
+            bool Check = true;
             if (Uczen_Imie.Text == " " || Uczen_Imie.Text == "Imie")
             {
                 Uczen_Imie.Foreground = Brushes.Red;
@@ -46,20 +48,20 @@ namespace Sekretariat_Desktopowy
             }
             if (Uczen_Nazwisko.Text == " " || Uczen_Nazwisko.Text == "Nazwisko")
             {
-                Uczen_Imie.Foreground = Brushes.Red;
+                Uczen_Nazwisko.Foreground = Brushes.Red;
                 Check = false;
             }
-            if (Uczen_DataUrodzenia.SelectedDate>=DateTime.Now || Uczen_DataUrodzenia.SelectedDate==null)
+            if (Uczen_DataUrodzenia.SelectedDate >= DateTime.Now || Uczen_DataUrodzenia.SelectedDate == null)
             {
                 Uczen_DataUrodzenia.Foreground = Brushes.Red;
                 Check = false;
             }
-            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length!=11)
+            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length != 11)
             {
                 Uczen_Pesel.Foreground = Brushes.Red;
                 Check = false;
             }
-            if (Uczen_PlecM.IsChecked==false || Uczen_PlecK.IsChecked == false)
+            if (Uczen_PlecM.IsChecked == false || Uczen_PlecK.IsChecked == false)
             {
                 Uczen_PlecM.Foreground = Brushes.Red;
                 Uczen_PlecK.Foreground = Brushes.Red;
@@ -70,26 +72,16 @@ namespace Sekretariat_Desktopowy
                 Uczen_Klasa.Foreground = Brushes.Red;
                 Check = false;
             }
-
+            //Wiadomość jesli nie
             if (Check == false)
             {
                 Uczen_ErrorLabel.Content = "Brakujące lub nie poprawne dane !!!";
             }
-            else
+            //Jesli Okej to mozna deklarowac zmienną
+            if (Check)
             {
                 Uczen_ErrorLabel.Content = "";
             }
-
-        }
-
-        private void Nauczyciel_StworzRekord_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Pracownik_StworzRekord_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

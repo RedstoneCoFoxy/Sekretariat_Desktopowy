@@ -73,10 +73,10 @@
                             <TextBox x:Name="Uczen_Klasa" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Klasa"/>
                             <TextBox x:Name="Uczen_Grupy" Margin="190,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Grupy"/>
 
-                            <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                            <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 Stwórz
                             </Button>
-                            <Label x:Name="Uczen_ErrorLabel" Width="250"  Content="" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"/>
+                            <Label x:Name="Uczen_ErrorLabel" Width="250" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>
                     <TabItem x:Name="Tab_Item_Rekord_Nauczyciel" Background="#FFEFE9FF">

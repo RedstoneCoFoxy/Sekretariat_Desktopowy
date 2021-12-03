@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sekretariat_Desktopowy"
         mc:Ignorable="d"
-        Title="Sekretariat" Height="450" Width="800">
+        Title="Sekretariat" Height="450" Width="1034">
     <Grid>
         <TabControl>
             <TabItem x:Name="Tab_Item_Widok" Background="#FFEFE9FF" FontSize="16">
@@ -40,8 +40,8 @@
                             </MenuItem>
                         </MenuItem>
                     </Menu>
-                    <ScrollViewer Height="349" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible">
-                        <TextBlock x:Name="Tab_Item_Widok_TextBox" TextWrapping="NoWrap" FontSize="20" Width="770" VerticalAlignment="Top">
+                    <ScrollViewer Height="349" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Width="1020">
+                        <TextBlock x:Name="Tab_Item_Widok_TextBox"  FontSize="20" Width="auto" VerticalAlignment="Top">
 
                         </TextBlock>
                     </ScrollViewer>

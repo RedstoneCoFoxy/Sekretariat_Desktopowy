@@ -650,6 +650,101 @@ namespace Sekretariat_Desktopowy
                 TempTableUczen[0] = Temp;
                 TableUczen = TableUczen.Concat(TempTableUczen).ToArray();
             }
+            if (line.StartsWith("N"))
+            {
+                Nauczyciel[] TempTableNauczyciel = new Nauczyciel[1];
+                Nauczyciel Temp = new Nauczyciel();
+
+                Temp.Rodzaj = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Imie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DrugieImie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Nazwisko = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.NazwiskoPaniejskie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieOjca = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieMatki = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DataUrodzenia = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Pesel = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Plec = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.WychowawcaKlasa = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.PrzedmiotyNauczane = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Zajecia = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DataZatrudnienia = line.Substring(0, line.Length);
+
+                TempTableNauczyciel[0] = Temp;
+                TableNauczyciel = TableNauczyciel.Concat(TempTableNauczyciel).ToArray();
+            }
+            if (line.StartsWith("P"))
+            {
+                Pracownik[] TempTablePracownik = new Pracownik[1];
+                Pracownik Temp = new Pracownik();
+
+                Temp.Rodzaj = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Imie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DrugieImie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Nazwisko = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.NazwiskoPaniejskie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieOjca = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieMatki = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DataUrodzenia = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Pesel = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Plec = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Etat = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Opis = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DataZatrudnienia = line.Substring(0, line.Length);
+
+                TempTablePracownik[0] = Temp;
+                TablePracownik = TablePracownik.Concat(TempTablePracownik).ToArray();
+            }
         }
         private void Plik_Wczytaj_Click(object sender, RoutedEventArgs e)
         {

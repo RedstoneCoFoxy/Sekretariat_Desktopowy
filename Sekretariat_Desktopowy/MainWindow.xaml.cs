@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -518,6 +519,24 @@ namespace Sekretariat_Desktopowy
             bitmap.EndInit();
             Pracownik_Zdjecia.Source = bitmap;
             PracownikWybraneZdjecie = selectedFileName;
+        }
+        private void Plik_Zapisz_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog Zapis = new SaveFileDialog();
+
+            Zapis.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            Zapis.FilterIndex = 2;
+            Zapis.RestoreDirectory = true;
+            if (Zapis.ShowDialog() == true)
+            {
+                using(StreamWriter writer = new StreamWriter(Zapis.FileName))
+                {
+                    writer.WriteLine("super");
+                    writer.WriteLine("super");
+                    writer.Close();
+                }
+
+            }
         }
     }
     }

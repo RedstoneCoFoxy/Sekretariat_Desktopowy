@@ -23,7 +23,7 @@
                                     Wczytaj
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem x:Name="Menu_Plik_Zapisz" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Zapisz" Click="Plik_Zapisz_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Zapisz
                                 </MenuItem.Header>

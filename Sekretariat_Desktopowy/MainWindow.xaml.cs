@@ -76,9 +76,14 @@ namespace Sekretariat_Desktopowy
         public void Update_Widok()
         {
             Tab_Item_Widok_TextBox.Text = "";
-            if (TableUczen.Length == 0) { Tab_Item_Widok_TextBox.Text = "Brak rekordów Uczniów"; };
+            if (TableUczen.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+ "Brak rekordów Uczniów\n"; };
             for (int i = 0; i < TableUczen.Length; i++) { 
                 Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableUczen[i].Imie +" " + TableUczen[i].DrugieImie + " " + TableUczen[i].Nazwisko + " " + TableUczen[i].NazwiskoPaniejskie + " " + TableUczen[i].ImieOjca + " " + TableUczen[i].ImieMatki + " " + TableUczen[i].DataUrodzenia + " " + TableUczen[i].Pesel + " " + TableUczen[i].Plec + " " + TableUczen[i].Klasa + " " + TableUczen[i].Grupy + "\n";
+            }
+            if (TableNauczyciel.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+"Brak rekordów Nauczycieli\n"; };
+            for (int i = 0; i < TableNauczyciel.Length; i++)
+            {
+                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableNauczyciel[i].Imie + " " + TableNauczyciel[i].DrugieImie + " " + TableNauczyciel[i].Nazwisko + " " + TableNauczyciel[i].NazwiskoPaniejskie + " " + TableNauczyciel[i].ImieOjca + " " + TableNauczyciel[i].ImieMatki + " " + TableNauczyciel[i].DataUrodzenia + " " + TableNauczyciel[i].Pesel + " " + TableNauczyciel[i].Plec + " " + TableNauczyciel[i].DataZatrudnienia + " " + TableNauczyciel[i].PrzedmiotyNauczane + " " + TableNauczyciel[i].WychowawcaKlasa + " " + TableNauczyciel[i].Zajecia + "\n";
             }
         }    
         private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
@@ -191,7 +196,7 @@ namespace Sekretariat_Desktopowy
                 Update_Widok();
             }
         }
-        private void Uczen_WyborZdjecia_Click(object sender, RoutedEventArgs e)
+        private void Uczen_WyborZdjecia_Click1(object sender, RoutedEventArgs e)
         {
             //Kod Otwierania Obrazu z poprzedniego programu
             OpenFileDialog dlg = new OpenFileDialog();
@@ -253,7 +258,7 @@ namespace Sekretariat_Desktopowy
                 Check = false;
             }
             else { Nauczyciel_DataZatrudnienia.Foreground = Brushes.Black; }
-            if (Nauczyciel_PrzedmiotyNauczane.Text == " " || Nauczyciel_PrzedmiotyNauczane.Text == "Nazwisko")
+            if (Nauczyciel_PrzedmiotyNauczane.Text == " " || Nauczyciel_PrzedmiotyNauczane.Text == "Przedmioty Nauczane")
             {
                 Nauczyciel_PrzedmiotyNauczane.Foreground = Brushes.Red;
                 Check = false;
@@ -282,10 +287,10 @@ namespace Sekretariat_Desktopowy
                 Temp.Nazwisko = Nauczyciel_Nazwisko.Text;
                 Temp.DataUrodzenia = Data;
                 Temp.Pesel = Nauczyciel_Pesel.Text;
-                Temp.Plec = Plec;                
+                Temp.Plec = Plec;
                 Temp.Zdjecie = NauczycielWybraneZdjecie;
                 Temp.PrzedmiotyNauczane = Nauczyciel_PrzedmiotyNauczane.Text;
-                Temp.DataZatrudnienia= Nauczyciel_DataZatrudnienia.ToString();
+                Temp.DataZatrudnienia = Nauczyciel_DataZatrudnienia.ToString();
 
                 if (Nauczyciel_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
                 else { Temp.DrugieImie = Nauczyciel_DrugieImie.Text; };
@@ -327,6 +332,29 @@ namespace Sekretariat_Desktopowy
 
                 Update_Widok();
             }
+     
         }
+
+        private void Nauczyciel_WyborZdjecia_Click(object sender, RoutedEventArgs e)
+        {
+            //Kod Otwierania Obrazu z poprzedniego programu
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.InitialDirectory = "c:\\";
+            dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
+            dlg.RestoreDirectory = true;
+            dlg.ShowDialog();
+
+            string selectedFileName = dlg.FileName;
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(selectedFileName);
+            bitmap.EndInit();
+            Nauczyciel_Zdjecia.Source = bitmap;
+            NauczycielWybraneZdjecie = selectedFileName;
         }
+        private void Pracownik_StworzRekord_Click1(object sender, RoutedEventArgs e)
+        {
+
+        }
+    }
     }

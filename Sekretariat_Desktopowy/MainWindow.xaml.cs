@@ -35,13 +35,30 @@ namespace Sekretariat_Desktopowy
             public string NazwiskoPaniejskie = "";
             public string ImieOjca = "";
             public string ImieMatki = "";
-            public string DataUrodzenia;
+            public string DataUrodzenia = "";
             public string Pesel = "";
             public string Plec = "";
             public string Zdjecie = "";
 
             public string Klasa = "";
             public string Grupy = "";
+
+            public string ReturnForSave()
+            {
+                string Temp="";
+                Temp = Temp + Rodzaj + "Ø";
+                Temp = Temp + Imie + "Ø";
+                Temp = Temp + Nazwisko + "Ø";
+                Temp = Temp + NazwiskoPaniejskie + "Ø";
+                Temp = Temp + ImieOjca + "Ø";
+                Temp = Temp + ImieMatki + "Ø";
+                Temp = Temp + DataUrodzenia + "Ø";
+                Temp = Temp + Pesel + "Ø";
+                Temp = Temp + Plec + "Ø";
+                Temp = Temp + Klasa + "Ø";
+                Temp = Temp + Grupy + "Ø";
+                return Temp;
+            }
         }
         public class Nauczyciel
         {
@@ -54,7 +71,7 @@ namespace Sekretariat_Desktopowy
             public string NazwiskoPaniejskie = "";
             public string ImieOjca = "";
             public string ImieMatki = "";
-            public string DataUrodzenia;
+            public string DataUrodzenia = "";
             public string Pesel = "";
             public string Plec = "";
             public string Zdjecie = "";
@@ -62,7 +79,26 @@ namespace Sekretariat_Desktopowy
             public string WychowawcaKlasa = "";
             public string PrzedmiotyNauczane = "";
             public string Zajecia = "";
-            public string DataZatrudnienia;
+            public string DataZatrudnienia = "";
+
+            public string ReturnForSave()
+            {
+                string Temp = "";
+                Temp = Temp + Rodzaj + "Ø";
+                Temp = Temp + Imie + "Ø";
+                Temp = Temp + Nazwisko + "Ø";
+                Temp = Temp + NazwiskoPaniejskie + "Ø";
+                Temp = Temp + ImieOjca + "Ø";
+                Temp = Temp + ImieMatki + "Ø";
+                Temp = Temp + DataUrodzenia + "Ø";
+                Temp = Temp + Pesel + "Ø";
+                Temp = Temp + Plec + "Ø";
+                Temp = Temp + WychowawcaKlasa + "Ø";
+                Temp = Temp + PrzedmiotyNauczane + "Ø";
+                Temp = Temp + Zajecia + "Ø";
+                Temp = Temp + DataZatrudnienia + "Ø";
+                return Temp;
+            }
         }
         public class Pracownik
         {
@@ -74,14 +110,32 @@ namespace Sekretariat_Desktopowy
             public string NazwiskoPaniejskie = "";
             public string ImieOjca = "";
             public string ImieMatki = "";
-            public string DataUrodzenia;
+            public string DataUrodzenia = "";
             public string Pesel = "";
             public string Plec = "";
             public string Zdjecie = "";
 
             public string Etat = "";
             public string Opis = "";
-            public string DataZatrudnienia;
+            public string DataZatrudnienia = "";
+
+            public string ReturnForSave()
+            {
+                string Temp = "";
+                Temp = Temp + Rodzaj + "Ø";
+                Temp = Temp + Imie + "Ø";
+                Temp = Temp + Nazwisko + "Ø";
+                Temp = Temp + NazwiskoPaniejskie + "Ø";
+                Temp = Temp + ImieOjca + "Ø";
+                Temp = Temp + ImieMatki + "Ø";
+                Temp = Temp + DataUrodzenia + "Ø";
+                Temp = Temp + Pesel + "Ø";
+                Temp = Temp + Plec + "Ø";
+                Temp = Temp + Etat + "Ø";
+                Temp = Temp + Opis + "Ø";
+                Temp = Temp + DataZatrudnienia + "Ø";
+                return Temp;
+            }
         }
 
         string UczenWybraneZdjecie = "";
@@ -229,17 +283,17 @@ namespace Sekretariat_Desktopowy
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
             dlg.RestoreDirectory = true;
-            dlg.ShowDialog();
-
-            string selectedFileName = dlg.FileName;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(selectedFileName);
-            bitmap.EndInit();
-            Uczen_Zdjecie.Source = bitmap;
-            UczenWybraneZdjecie = selectedFileName;
+            if (dlg.ShowDialog() == true)
+            {
+                string selectedFileName = dlg.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                Uczen_Zdjecie.Source = bitmap;
+                UczenWybraneZdjecie = selectedFileName;
+            }
         }
-
         private void Nauczyciel_StworzRekord_Click(object sender, RoutedEventArgs e)
         {
             //Jeden Wielki Check czy pola się zgadzają
@@ -502,7 +556,6 @@ namespace Sekretariat_Desktopowy
                 Update_Widok();
             }
         }
-
         private void Pracownik_WyborZdjecia_Click(object sender, RoutedEventArgs e)
         {
             //Kod Otwierania Obrazu z poprzedniego programu
@@ -520,19 +573,30 @@ namespace Sekretariat_Desktopowy
             Pracownik_Zdjecia.Source = bitmap;
             PracownikWybraneZdjecie = selectedFileName;
         }
+
         private void Plik_Zapisz_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog Zapis = new SaveFileDialog();
 
-            Zapis.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            Zapis.Filter = "txt files (*.txt)|*.txt";
             Zapis.FilterIndex = 2;
             Zapis.RestoreDirectory = true;
             if (Zapis.ShowDialog() == true)
             {
                 using(StreamWriter writer = new StreamWriter(Zapis.FileName))
                 {
-                    writer.WriteLine("super");
-                    writer.WriteLine("super");
+                    for (int i = 0; i < TableUczen.Length; i++)
+                    {
+                        writer.WriteLine(TableUczen[i].ReturnForSave());
+                    }
+                    for (int i = 0; i < TableNauczyciel.Length; i++)
+                    {
+                        writer.WriteLine(TableNauczyciel[i].ReturnForSave());
+                    }
+                    for (int i = 0; i < TablePracownik.Length; i++)
+                    {
+                        writer.WriteLine(TablePracownik[i].ReturnForSave());
+                    }
                     writer.Close();
                 }
 

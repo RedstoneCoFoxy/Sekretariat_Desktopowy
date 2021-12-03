@@ -41,10 +41,35 @@ namespace Sekretariat_Desktopowy
             public string Klasa = "";
             public string Grupy = "";
         }
+        public class Nauczyciel
+        {
+
+            public string Rodzaj = "N";
+
+            public string Imie = "";
+            public string DrugieImie = "";
+            public string Nazwisko = "";
+            public string NazwiskoPaniejskie = "";
+            public string ImieOjca = "";
+            public string ImieMatki = "";
+            public string DataUrodzenia;
+            public string Pesel = "";
+            public string Plec = "";
+            public string Zdjecie = "";
+
+            public string WychowawcaKlasa = "";
+            public string PrzedmiotyNauczane = "";
+            public string Zajecia = "";
+            public string DataZatrudnienia;
+        }
+
         string UczenWybraneZdjecie = "";
+        string NauczycielWybraneZdjecie = "";
+        string PracownikWybraneZdjecie = "";
+
         //Tworzenie 3 table które składają się na "baze", są narazie puste poniewaz potem dane są dodawane funkcją .concat
         Uczen[] TableUczen = new Uczen[0];
-        //Nauczyciel[] TableUczen = new Nauczyciel[0];
+        Nauczyciel[] TableNauczyciel = new Nauczyciel[0];
         //Pracownik[] TableUczen = new Pracownik[0];
 
         //Uaktualnia Widok "Bazy"
@@ -60,7 +85,7 @@ namespace Sekretariat_Desktopowy
         {
 
             //Jeden Wielki Check czy pola się zgadzają
-            Uczen_ErrorLabel.Content = "fgdfgdfg";
+            Uczen_ErrorLabel.Content = "";
             bool Check = true;
             if (Uczen_Imie.Text == " " || Uczen_Imie.Text == "Imie")
             {
@@ -161,6 +186,7 @@ namespace Sekretariat_Desktopowy
                 Uczen_PlecM.IsChecked = false;
                 Uczen_PlecK.IsChecked = false;
                 Uczen_DataUrodzenia.SelectedDate = null;
+                Uczen_Zdjecie.Source = null;
 
                 Update_Widok();
             }
@@ -182,5 +208,125 @@ namespace Sekretariat_Desktopowy
             Uczen_Zdjecie.Source = bitmap;
             UczenWybraneZdjecie = selectedFileName;
         }
+
+        private void Nauczyciel_StworzRekord_Click(object sender, RoutedEventArgs e)
+        {
+            //Jeden Wielki Check czy pola się zgadzają
+            Nauczyciel_ErrorLabel.Content = "";
+            bool Check = true;
+            if (Nauczyciel_Imie.Text == " " || Nauczyciel_Imie.Text == "Imie")
+            {
+                Nauczyciel_Imie.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_Imie.Foreground = Brushes.Black; }
+            if (Nauczyciel_Nazwisko.Text == " " || Nauczyciel_Nazwisko.Text == "Nazwisko")
+            {
+                Nauczyciel_Nazwisko.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_Nazwisko.Foreground = Brushes.Black; }
+            if (Nauczyciel_DataUrodzenia.SelectedDate >= DateTime.Now || Nauczyciel_DataUrodzenia.SelectedDate == null)
+            {
+                Nauczyciel_DataUrodzenia.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_DataUrodzenia.Foreground = Brushes.Black; }
+            if (Nauczyciel_Pesel.Text == " " || Nauczyciel_Pesel.Text == "Pesel" || Nauczyciel_Pesel.Text.Length != 11 || Nauczyciel_Pesel.Text.All(char.IsDigit) != true)
+            {
+                Nauczyciel_Pesel.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_Pesel.Foreground = Brushes.Black; }
+
+            if (Nauczyciel_PlecM.IsChecked == false && Nauczyciel_PlecK.IsChecked == false)
+            {
+                Nauczyciel_PlecM.Foreground = Brushes.Red;
+                Nauczyciel_PlecK.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_PlecM.Foreground = Brushes.Black; Nauczyciel_PlecK.Foreground = Brushes.Black; }
+
+            if (Nauczyciel_DataZatrudnienia.SelectedDate > DateTime.Now || Nauczyciel_DataZatrudnienia.SelectedDate == null)
+            {
+                Nauczyciel_DataZatrudnienia.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_DataZatrudnienia.Foreground = Brushes.Black; }
+            if (Nauczyciel_PrzedmiotyNauczane.Text == " " || Nauczyciel_PrzedmiotyNauczane.Text == "Nazwisko")
+            {
+                Nauczyciel_PrzedmiotyNauczane.Foreground = Brushes.Red;
+                Check = false;
+            }
+            else { Nauczyciel_PrzedmiotyNauczane.Foreground = Brushes.Black; }
+
+            //Wiadomość jesli nie
+            if (Check == false)
+            {
+                Nauczyciel_ErrorLabel.Content = "Brakujące lub niepoprawne dane !!!";
+            }
+            //Jesli Okej to mozna deklarowac zmienną
+            //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+            if (Check)
+            {
+                Nauczyciel_ErrorLabel.Content = "";
+                Nauczyciel[] TempTableNauczyciel = new Nauczyciel[1];
+                Nauczyciel Temp = new Nauczyciel();
+                string Plec = "";
+                if (Nauczyciel_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
+                if (Nauczyciel_PlecK.IsChecked == true) { Plec = "Kobieta"; };
+                string Data;
+                Data = Nauczyciel_DataUrodzenia.ToString();
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Temp.Imie = Nauczyciel_Imie.Text;
+                Temp.Nazwisko = Nauczyciel_Nazwisko.Text;
+                Temp.DataUrodzenia = Data;
+                Temp.Pesel = Nauczyciel_Pesel.Text;
+                Temp.Plec = Plec;                
+                Temp.Zdjecie = NauczycielWybraneZdjecie;
+                Temp.PrzedmiotyNauczane = Nauczyciel_PrzedmiotyNauczane.Text;
+                Temp.DataZatrudnienia= Nauczyciel_DataZatrudnienia.ToString();
+
+                if (Nauczyciel_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
+                else { Temp.DrugieImie = Nauczyciel_DrugieImie.Text; };
+
+                if (Nauczyciel_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { Temp.NazwiskoPaniejskie = " "; }
+                else { Temp.NazwiskoPaniejskie = Nauczyciel_NazwiskoPaniejskie.Text; };
+
+                if (Nauczyciel_ImieOjca.Text == "Imie Ojca") { Temp.ImieOjca = " "; }
+                else { Temp.ImieOjca = Nauczyciel_ImieOjca.Text; };
+
+                if (Nauczyciel_ImieMatki.Text == "Imie Matki") { Temp.ImieMatki = " "; }
+                else { Temp.ImieMatki = Nauczyciel_ImieMatki.Text; };
+
+                if (Nauczyciel_WychowawcaKlasy.Text == "Wychowawca Klasy") { Temp.WychowawcaKlasa = " "; }
+                else { Temp.WychowawcaKlasa = Nauczyciel_WychowawcaKlasy.Text; };
+                if (Nauczyciel_Zajecia.Text == "Zajecia z klasami") { Temp.Zajecia = " "; }
+                else { Temp.Zajecia = Nauczyciel_Zajecia.Text; };
+
+                //Łączenie tymczasowej tabeli z tabelą z "bazy danych"
+                TempTableNauczyciel[0] = Temp;
+                TableNauczyciel = TableNauczyciel.Concat(TempTableNauczyciel).ToArray();
+
+                //Wyczyszczenie Pól tekstowych i powiadomienie uzytkownika
+                Nauczyciel_ErrorLabel.Content = "Pomyślnie stworzono";
+                Nauczyciel_Imie.Text = "Imie";
+                Nauczyciel_DrugieImie.Text = "Drugie Imie";
+                Nauczyciel_Nazwisko.Text = "Nazwisko";
+                Nauczyciel_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
+                Nauczyciel_ImieOjca.Text = "Imie Matki";
+                Nauczyciel_ImieMatki.Text = "Imie Ojca";
+                Nauczyciel_Pesel.Text = "Pesel";
+                NauczycielWybraneZdjecie = "";
+                Nauczyciel_Zajecia.Text = "Zajecia z klasami";
+                Nauczyciel_WychowawcaKlasy.Text = "Wychowawca Klasy";
+                Nauczyciel_PlecM.IsChecked = false;
+                Nauczyciel_PlecK.IsChecked = false;
+                Nauczyciel_DataUrodzenia.SelectedDate = null;
+                Nauczyciel_Zdjecia.Source = null;
+
+                Update_Widok();
+            }
+        }
+        }
     }
-}

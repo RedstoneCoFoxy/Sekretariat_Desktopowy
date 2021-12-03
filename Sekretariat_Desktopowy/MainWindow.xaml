@@ -70,7 +70,7 @@
                             <Button x:Name="Uczen_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Uczen_WyborZdjecia_Click">Wybierz Zdjęcie</Button>
                             <Image x:Name="Uczen_Zdjecie" HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Uniform"/>
 
-                            <TextBox x:Name="Uczen_Klasa" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Klasa"/>
+                            <TextBox x:Name="Uczen_Klasa" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Klasa" TextChanged="Uczen_Klasa_TextChanged"/>
                             <TextBox x:Name="Uczen_Grupy" Margin="190,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Grupy"/>
 
                             <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
@@ -94,7 +94,7 @@
                             <TextBox x:Name="Nauczyciel_Pesel" Margin="190,110,390,0" Height="25" Width="200" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Pesel"/>
                             <RadioButton x:Name="Nauczyciel_PlecM" GroupName="plec_N" Margin="10,146,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="M"/>
                             <RadioButton x:Name="Nauczyciel_PlecK" GroupName="plec_N" Margin="10,165,690,0" Background="#FFEFE9FF" Height="25" Width="80" VerticalAlignment="Top" HorizontalAlignment="Left" Content="K"/>
-                            <Button x:Name="Nauczyciel_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left">Wybierz Zdjęcie</Button>
+                            <Button x:Name="Nauczyciel_WyborZdjecia" Margin="96,146,510,0" Height="25" Width="170" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Nauczyciel_WyborZdjecia_Click">Wybierz Zdjęcie</Button>
                             <Image x:Name="Nauczyciel_Zdjecia" HorizontalAlignment="Right" Height="265" Margin="0,10,10,0" VerticalAlignment="Top" Width="265" Source="SuperKot.png" Stretch="Uniform"/>
 
                             <TextBox x:Name="Nauczyciel_WychowawcaKlasy" Margin="10,187,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Wychowawca Klasy"/>
@@ -102,9 +102,10 @@
                             <TextBox x:Name="Nauczyciel_Zajecia" Margin="10,217,0,0" Height="25" Width="190" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Zajecia z klasami"/>
                             <DatePicker x:Name="Nauczyciel_DataZatrudnienia" Margin="220,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-                            <Button x:Name="Nauczyciel_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                            <Button x:Name="Nauczyciel_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Nauczyciel_StworzRekord_Click">
                                 Stwórz
                             </Button>
+                            <Label x:Name="Nauczyciel_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>
                     <TabItem x:Name="Tab_Item_Rekord_Pracownik" Background="#FFEFE9FF">
@@ -129,7 +130,7 @@
                             <TextBox x:Name="Pracownik_Opis" Margin="190,187,0,0" Height="25" Width="240" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                             <DatePicker x:Name="Pracownik_DataZatrudnienia" Margin="10,217,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
-                            <Button x:Name="Pracownik_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                            <Button x:Name="Pracownik_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Pracownik_StworzRekord_Click">
                                 Stwórz
                             </Button>
                         </Grid>

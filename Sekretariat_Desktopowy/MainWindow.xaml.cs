@@ -581,7 +581,7 @@ namespace Sekretariat_Desktopowy
         {
             SaveFileDialog Zapis = new SaveFileDialog();
 
-            Zapis.Filter = "txt files (*.txt)|*.txt";
+            Zapis.Filter = "Pliki bazy (*.baza)|*.baza";
             Zapis.FilterIndex = 2;
             Zapis.RestoreDirectory = true;
             if (Zapis.ShowDialog() == true)
@@ -605,23 +605,78 @@ namespace Sekretariat_Desktopowy
 
             }
         }
+        public void ZaladujRekordDoBazy(string line)
+        {
+            if (line.StartsWith("U")){
+                Uczen[] TempTableUczen = new Uczen[1];
+                Uczen Temp = new Uczen();
+
+                Temp.Rodzaj = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0,line.IndexOf("Ø")+1);
+
+                Temp.Imie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø")+1);
+
+                Temp.DrugieImie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Nazwisko = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.NazwiskoPaniejskie = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieOjca = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.ImieMatki = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.DataUrodzenia = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Pesel = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Plec = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+
+                Temp.Klasa = line.Substring(0, line.IndexOf("Ø"));
+                line = line.Remove(0, line.IndexOf("Ø") + 1);
+
+                Temp.Grupy = line.Substring(0, line.Length);
+
+                TempTableUczen[0] = Temp;
+                TableUczen = TableUczen.Concat(TempTableUczen).ToArray();
+            }
+        }
         private void Plik_Wczytaj_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog Otworz = new OpenFileDialog();
 
-            Otworz.Filter = "txt files (*.txt)|*.txt";
+            Otworz.Filter = "Pliki bazy (*.baza)|*.baza";
             Otworz.FilterIndex = 2;
             Otworz.RestoreDirectory = true;
             if (Otworz.ShowDialog() == true)
-            {
+            {            
+                
                 using (StreamReader reader = new StreamReader(Otworz.FileName))
                 {
                     Tab_Item_Widok_TextBox.Text = "";
                     string line;
+                    TableUczen = new Uczen[0];
+                    TableNauczyciel = new Nauczyciel[0];
+                    TablePracownik = new Pracownik[0];
                     while ((line = reader.ReadLine()) != null)
                     {
-                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + line + "\n";
+                        if (line.StartsWith("U")|| line.StartsWith("N")|| line.StartsWith("P"))
+                        {                           
+                            ZaladujRekordDoBazy(line);
+                            Tab_Item_Widok_TextBox.Text = line;
+                        }                       
                     }
+                    Update_Widok();
                     reader.Close();
                 }
             }

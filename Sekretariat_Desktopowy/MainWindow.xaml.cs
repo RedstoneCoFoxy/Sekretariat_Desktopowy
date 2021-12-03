@@ -424,15 +424,16 @@ namespace Sekretariat_Desktopowy
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
             dlg.RestoreDirectory = true;
-            dlg.ShowDialog();
-
-            string selectedFileName = dlg.FileName;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(selectedFileName);
-            bitmap.EndInit();
-            Nauczyciel_Zdjecia.Source = bitmap;
-            NauczycielWybraneZdjecie = selectedFileName;
+            if (dlg.ShowDialog() == true)
+            {
+                string selectedFileName = dlg.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                Nauczyciel_Zdjecia.Source = bitmap;
+                NauczycielWybraneZdjecie = selectedFileName;
+            }
         }
         private void Pracownik_StworzRekord_Click1(object sender, RoutedEventArgs e)
         {
@@ -563,15 +564,17 @@ namespace Sekretariat_Desktopowy
             dlg.InitialDirectory = "c:\\";
             dlg.Filter = "Image files (*.jpg)|*.jpg|All Files (*.*)|*.*";
             dlg.RestoreDirectory = true;
-            dlg.ShowDialog();
+            if (dlg.ShowDialog() == true)
+            {
 
-            string selectedFileName = dlg.FileName;
-            BitmapImage bitmap = new BitmapImage();
-            bitmap.BeginInit();
-            bitmap.UriSource = new Uri(selectedFileName);
-            bitmap.EndInit();
-            Pracownik_Zdjecia.Source = bitmap;
-            PracownikWybraneZdjecie = selectedFileName;
+                string selectedFileName = dlg.FileName;
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.UriSource = new Uri(selectedFileName);
+                bitmap.EndInit();
+                Pracownik_Zdjecia.Source = bitmap;
+                PracownikWybraneZdjecie = selectedFileName;
+            }
         }
 
         private void Plik_Zapisz_Click(object sender, RoutedEventArgs e)
@@ -602,5 +605,26 @@ namespace Sekretariat_Desktopowy
 
             }
         }
-    }
+        private void Plik_Wczytaj_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog Otworz = new OpenFileDialog();
+
+            Otworz.Filter = "txt files (*.txt)|*.txt";
+            Otworz.FilterIndex = 2;
+            Otworz.RestoreDirectory = true;
+            if (Otworz.ShowDialog() == true)
+            {
+                using (StreamReader reader = new StreamReader(Otworz.FileName))
+                {
+                    Tab_Item_Widok_TextBox.Text = "";
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + line + "\n";
+                    }
+                    reader.Close();
+                }
+            }
+        }
+        }
     }

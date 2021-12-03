@@ -18,7 +18,7 @@
                             <MenuItem.Header>
                                 Plik
                             </MenuItem.Header>
-                            <MenuItem x:Name="Menu_Plik_Wczytaj" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Wczytaj" Click="Plik_Wczytaj_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Wczytaj
                                 </MenuItem.Header>
@@ -40,8 +40,8 @@
                             </MenuItem>
                         </MenuItem>
                     </Menu>
-                    <ScrollViewer Height="349" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                        <TextBlock x:Name="Tab_Item_Widok_TextBox" TextWrapping="Wrap" FontSize="20" Width="770" VerticalAlignment="Top">
+                    <ScrollViewer Height="349" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Visible">
+                        <TextBlock x:Name="Tab_Item_Widok_TextBox" TextWrapping="NoWrap" FontSize="20" Width="770" VerticalAlignment="Top">
 
                         </TextBlock>
                     </ScrollViewer>

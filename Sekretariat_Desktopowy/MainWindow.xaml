@@ -141,7 +141,7 @@
 
                 </TabControl>
             </TabItem>
-            <TabItem x:Name="Tab_Item_Sortuj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Visible">
+            <TabItem x:Name="Tab_Item_Sortuj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Hidden">
                 <TabItem.Header>
                     Sortuj
                 </TabItem.Header>
@@ -150,8 +150,8 @@
                     <Button x:Name="Sortuj_Wroc" Margin="10,10,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Wroc_Click">
                         Wróc
                     </Button>
-                    <ComboBox Margin="86,51,666,300" Background="#FFEFE9FF" FontSize="16">
-                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                    <ComboBox x:Name="Sortuj_SelectBox" Margin="86,51,666,300" Background="#FFEFE9FF" FontSize="16">
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16" IsSelected="True">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Imie</TextBlock>
                             </StackPanel>

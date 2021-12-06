@@ -792,5 +792,33 @@ namespace Sekretariat_Desktopowy
             Tab_Item_Widok.Visibility = Visibility.Visible;
             Tab_Item_Rekord.Visibility = Visibility.Visible;
         }
+
+        private void Sortuj_Gotowe_Click(object sender, RoutedEventArgs e)
+        {
+            int SelectedItemIndex=Sortuj_SelectBox.SelectedIndex;
+            int SortType = 0;
+            if (SelectedItemIndex <= 14) { SortType = 3; }
+            if (SelectedItemIndex == 15) { SortType = 2; }
+            if (SelectedItemIndex > 15) { SortType = 1; }
+            Sortuj(SortType);
+            void Sortuj(int Rodzaj)
+            {
+                int IU = 0, IN = 0, IP = 0;
+                if (SortType == 3)
+                {
+                    if (TableUczen[IU].Imie == TableNauczyciel[IN].Imie)
+                    {
+
+                    }
+                }
+
+            }
+            //Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text +
+            Tab_Item_Sortuj.Visibility = Visibility.Hidden;
+            Tab_Item_Widok.IsSelected = true;
+
+            Tab_Item_Widok.Visibility = Visibility.Visible;
+            Tab_Item_Rekord.Visibility = Visibility.Visible;
+        }
     }
     }

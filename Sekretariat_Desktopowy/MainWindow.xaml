@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:Sekretariat_Desktopowy"
         mc:Ignorable="d"
         Title="Sekretariat" Height="450" Width="1034">
-    
+
     <Grid>
         <TabControl x:Name="MainTab">
             <TabItem x:Name="Tab_Item_Widok" Background="#FFEFE9FF" FontSize="16">
@@ -141,18 +141,111 @@
 
                 </TabControl>
             </TabItem>
-            <TabItem x:Name="Tab_Item_Sortuj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Hidden">
+            <TabItem x:Name="Tab_Item_Sortuj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Visible">
                 <TabItem.Header>
                     Sortuj
                 </TabItem.Header>
                 <Grid>
-                    <Button x:Name="Sortuj_Wroc" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
-                        Stwórz
+                    <Label Height="36" Width="79" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="7,51,0,0">Sortuj po</Label>
+                    <Button x:Name="Sortuj_Wroc" Margin="10,10,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Wroc_Click">
+                        Wróc
                     </Button>
+                    <ComboBox Margin="86,51,666,300" Background="#FFEFE9FF" FontSize="16">
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Imie</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Drugie Imie</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Nazwisko</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Nazwisko Paniejskie</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Imie Matki</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Imie Ojca</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Data Urodzenia</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Pesel</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Plec</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Klasa*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Grupy*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Wychowawstwo*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Przedmioty Nauczane*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Zajecia*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Data Zatrudnienia*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Etat*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock>Opis*</TextBlock>
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <RadioButton x:Name="Sortuj_RadioMalejaco" GroupName="SortowanieRosnaco"  Height="36" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="361,57,0,0" Content="Malejąco"/>
+                    <RadioButton IsChecked="True" x:Name="Sortuj_RadioRosnaco" GroupName="SortowanieRosnaco"  Height="36" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="456,57,0,0" Content="Rosnąco"/>
+
+                    <Label Height="36" Width="230" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Margin="7,105,0,0">*Nie wszystkie tabele zawietają</Label>
+                    <Button x:Name="Sortuj_Gotowe" Margin="196,105,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Gotowe_Click" Content="Gotowe"/>
                 </Grid>
             </TabItem>
         </TabControl>
     </Grid>
-    
+
 </Window>
     

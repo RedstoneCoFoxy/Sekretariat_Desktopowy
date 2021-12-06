@@ -783,6 +783,14 @@ namespace Sekretariat_Desktopowy
 
             Tab_Item_Widok.Visibility = Visibility.Hidden;
             Tab_Item_Rekord.Visibility = Visibility.Hidden;
+        }     
+            private void Sortuj_Wroc_Click(object sender, RoutedEventArgs e)
+        {
+            Tab_Item_Sortuj.Visibility = Visibility.Hidden;
+            Tab_Item_Widok.IsSelected = true;
+
+            Tab_Item_Widok.Visibility = Visibility.Visible;
+            Tab_Item_Rekord.Visibility = Visibility.Visible;
         }
     }
     }

@@ -776,5 +776,13 @@ namespace Sekretariat_Desktopowy
                 }
             }
         }
+        private void Plik_Sortuj_Click(object sender, RoutedEventArgs e)
+        {
+            Tab_Item_Sortuj.Visibility = Visibility.Visible;
+            Tab_Item_Sortuj.IsSelected = true;
+
+            Tab_Item_Widok.Visibility = Visibility.Hidden;
+            Tab_Item_Rekord.Visibility = Visibility.Hidden;
         }
+    }
     }

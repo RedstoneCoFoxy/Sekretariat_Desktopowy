@@ -804,12 +804,26 @@ namespace Sekretariat_Desktopowy
             void Sortuj(int Rodzaj)
             {
                 int IU = 0, IN = 0, IP = 0;
-                if (SortType == 3)
-                {
-                    if (TableUczen[IU].Imie == TableNauczyciel[IN].Imie)
-                    {
+                int HiU = 0, HiN = 0, HiP = 0;
+                int powtorzenia = 1;
+                int maxpowtorzenia = TableUczen.Length+TableNauczyciel.Length+TablePracownik.Length;
+                string Sekwencja = "";
 
+                if (Rodzaj == 3)
+                {
+                    while (powtorzenia <= maxpowtorzenia)
+                    {
+                        for(int U=0;U< TableUczen.Length - 1; U++)
+                        {
+                            if(string.Compare(TableUczen[U].Imie, TableUczen[U + 1].Imie)>0)
+                            {
+                                HiU = U+1;
+                                Tab_Item_Widok_TextBox.Text = HiU.ToString();
+                            }
+                        }
+                        powtorzenia++;
                     }
+                    
                 }
 
             }

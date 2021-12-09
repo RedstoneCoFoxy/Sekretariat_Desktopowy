@@ -59,7 +59,8 @@ namespace Sekretariat_Desktopowy
                 Temp = Temp + Grupy + "Ø";
                 return Temp;
             }
-        }
+
+            }
         public class Nauczyciel
         {
 
@@ -802,31 +803,48 @@ namespace Sekretariat_Desktopowy
             if (SelectedItemIndex > 15) { SortType = 1; }
             Sortuj(SortType);
             void Sortuj(int Rodzaj)
-            {
-                int IU = 0, IN = 0, IP = 0;
-                int HiU = 0, HiN = 0, HiP = 0;
-                int powtorzenia = 1;
-                int maxpowtorzenia = TableUczen.Length+TableNauczyciel.Length+TablePracownik.Length;
-                string Sekwencja = "";
-
-                if (Rodzaj == 3)
+            {               
+                if (TableUczen.Length + TableNauczyciel.Length + TablePracownik.Length > 0)
                 {
-                    while (powtorzenia <= maxpowtorzenia)
+                    string[] zmienne = new string[0];
+                    for (int U = 0; U < TableUczen.Length - 1; U++)
                     {
-                        for(int U=0;U< TableUczen.Length - 1; U++)
+                        string[] temp = new string[1];
+                        temp[0] = TableUczen[U].Imie + U.ToString() +"U";
+                        zmienne = zmienne.Concat(temp).ToArray();
+                    }
+                    for (int U = 0; U < TableNauczyciel.Length - 1; U++)
+                    {
+                        string[] temp = new string[1];
+                        temp[0] = TableNauczyciel[U].Imie + U.ToString()+"N";
+                        zmienne = zmienne.Concat(temp).ToArray();
+                    }
+                    for (int U = 0; U < TablePracownik.Length - 1; U++)
+                    {
+                        string[] temp = new string[1];
+                        temp[0] = TableNauczyciel[U].Imie + U.ToString()+"P";
+                        zmienne = zmienne.Concat(temp).ToArray();
+                    }
+                    Array.Sort(zmienne);
+                    for (int U = 0; U < zmienne.Length - 1; U++)
+                    {
+                        string String = zmienne[U];
+                        if (String.EndsWith("U"))
                         {
-                            if(string.Compare(TableUczen[U].Imie, TableUczen[U + 1].Imie)>0)
+                            int i = Int32.Parse(String.Substring(String.Length - 2, 1));
+                            if (TableUczen[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                             {
-                                HiU = U+1;
-                                Tab_Item_Widok_TextBox.Text = HiU.ToString();
+                                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableUczen[i].ReturnForSave().Replace("Ø", " ").Substring(2);
+                            }
+                            else
+                            {
+                                Tab_Item_Widok_TextBox.Text = "Coś nie zadziałało w sortowaniu w części z sprawdzaniem";
                             }
                         }
-                        powtorzenia++;
                     }
-                    
                 }
-
-            }
+        }
+            //if (TableUczen[X].Imie.Equals(String.Remove(String.Length - 1)))                             
             //Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text +
             Tab_Item_Sortuj.Visibility = Visibility.Hidden;
             Tab_Item_Widok.IsSelected = true;

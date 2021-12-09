@@ -240,7 +240,7 @@
                     <RadioButton x:Name="Sortuj_RadioMalejaco" GroupName="SortowanieRosnaco"  Height="36" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="361,57,0,0" Content="Malejąco"/>
                     <RadioButton IsChecked="True" x:Name="Sortuj_RadioRosnaco" GroupName="SortowanieRosnaco"  Height="36" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="456,57,0,0" Content="Rosnąco"/>
 
-                    <Label Height="36" Width="230" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Margin="7,105,0,0">*Nie wszystkie tabele zawietają</Label>
+                    <Label Height="36" Width="230" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Margin="7,105,0,0">*Nie wszystkie tabele zawierają</Label>
                     <Button x:Name="Sortuj_Gotowe" Margin="196,105,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Gotowe_Click" Content="Gotowe"/>
                 </Grid>
             </TabItem>

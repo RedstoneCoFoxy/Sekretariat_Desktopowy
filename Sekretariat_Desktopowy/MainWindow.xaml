@@ -475,7 +475,7 @@
 
                     <Label Height="36" Width="230" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Margin="10,153,0,0">*Nie wszystkie tabele zawierają</Label>
                     <Button x:Name="Szukaj_Gotowe" Margin="10,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Szukaj_Gotowe_Click" Content="Gotowe"/>
-                    <Button x:Name="Szukaj_Raport" Margin="184,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Szukaj_Raport_Click" Content="Zapizs wynik" Grid.ColumnSpan="2"/>
+                    <CheckBox x:Name="Szukaj_Raport" Margin="184,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Content="Zapisz wynik" Grid.ColumnSpan="2"/>
 
                     <Label x:Name="Szukaj_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                 </Grid>

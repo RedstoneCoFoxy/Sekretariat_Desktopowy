@@ -864,7 +864,7 @@ namespace Sekretariat_Desktopowy
             Tab_Item_Rekord.Visibility = Visibility.Visible;
         }
 
-        void Sortuj(int Rodzaj, Uczen[] UczenTemp, Nauczyciel[] NauczycielTemp, Pracownik[] PracownikTemp, int WybranePole) //funkcja sortująca 
+        string Sortuj(int Rodzaj, Uczen[] UczenTemp, Nauczyciel[] NauczycielTemp, Pracownik[] PracownikTemp, int WybranePole) //funkcja sortująca 
         {
             if (UczenTemp.Length + NauczycielTemp.Length + PracownikTemp.Length > 0)
             {
@@ -943,6 +943,7 @@ namespace Sekretariat_Desktopowy
                     //są teraz sprawdzane, i jesli jest U to Uczen, N dla Nauczyciela, P Pracownik
                     //Potem jest sprawdzana lizba, czy pod tym indexem jest wlasciwie ten rekord                      
                     string String = zmienne[U];
+                    string raport = "";
                     if (String.EndsWith("U"))
                     {
                         int i = Int32.Parse(String.Substring(String.Length - 2, 1));
@@ -953,66 +954,77 @@ namespace Sekretariat_Desktopowy
                                 if (UczenTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (UczenTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (UczenTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (UczenTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (UczenTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (UczenTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (UczenTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (UczenTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (UczenTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 9://klasa
                                 if (UczenTemp[i].Klasa.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 10://grupy
                                 if (UczenTemp[i].Grupy.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
+                                    raport = raport + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
@@ -1027,81 +1039,95 @@ namespace Sekretariat_Desktopowy
                                 if (NauczycielTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (NauczycielTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (NauczycielTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (NauczycielTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (NauczycielTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (NauczycielTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (NauczycielTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (NauczycielTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (NauczycielTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 11://Wychowawstwo
                                 if (NauczycielTemp[i].WychowawcaKlasa.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 12://Przedmioty
                                 if (NauczycielTemp[i].PrzedmiotyNauczane.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 13://Zajecia
                                 if (NauczycielTemp[i].Zajecia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 14://Data Zatrudnienia
                                 if (NauczycielTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
+                                    raport = raport + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
+                        
                     }
                     if (String.EndsWith("P"))
                     {
@@ -1113,78 +1139,92 @@ namespace Sekretariat_Desktopowy
                                 if (PracownikTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (PracownikTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (PracownikTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (PracownikTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (PracownikTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (PracownikTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (PracownikTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (PracownikTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (PracownikTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 14://Data Zatrudnienia
                                 if (PracownikTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 15://Etat
                                 if (PracownikTemp[i].Etat.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 16://Opis
                                 if (PracownikTemp[i].Opis.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
                                     Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
+                                    raport = raport + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
-                    }
-                }
+                        return raport;
+                    }                   
+                }              
             }
+            return "";
         }
         private void Sortuj_Gotowe_Click(object sender, RoutedEventArgs e)
         {
@@ -1527,15 +1567,47 @@ namespace Sekretariat_Desktopowy
 
                 int SortType = 0; //cześciowo przekopiowany kod z sortowania
 
-            if (SelectedSortIndex != 17) { 
-                if (SelectedSortIndex <= 14) { SortType = 3; }
-                if (SelectedSortIndex == 15) { SortType = 2; }
-                if (SelectedSortIndex > 15) { SortType = 1; }
-                Sortuj(SortType, TempUczen, TempNauczyciel, TempPracownik, SelectedSortIndex);
+                string Raport = "";
+                for (int i = 0; i < TempUczen.Length; i++)
+                {
+                    Raport = Raport + TempUczen[i].ReturnForPrint();
+                }
+                for (int i = 0; i < TempNauczyciel.Length; i++)
+                {
+                    Raport = Raport + TempNauczyciel[i].ReturnForPrint();
+                }
+                for (int i = 0; i < TempPracownik.Length; i++)
+                {
+                    Raport = Raport + TempPracownik[i].ReturnForPrint();
+                }
+
+                if (SelectedSortIndex != 17) { 
+                    if (SelectedSortIndex <= 14) { SortType = 3; }
+                    if (SelectedSortIndex == 15) { SortType = 2; }
+                    if (SelectedSortIndex > 15) { SortType = 1; }
+                
+                    Raport=Sortuj(SortType, TempUczen, TempNauczyciel, TempPracownik, SelectedSortIndex);
                 }
                 else
                 {
+                    Update_Widok(TempUczen,TempNauczyciel,TempPracownik);
+                }
+                if (Szukaj_Raport.IsChecked==true)
+                {
+                    SaveFileDialog Zapis = new SaveFileDialog();
 
+                    Zapis.Filter = "(*.txt)|*.txt";
+                    Zapis.FilterIndex = 2;
+                    Zapis.RestoreDirectory = true;
+                    if (Zapis.ShowDialog() == true)
+                    {
+                        using (StreamWriter writer = new StreamWriter(Zapis.FileName))
+                        {
+                            writer.WriteLine(Raport);
+                            writer.Close();
+                        }
+
+                    }
                 }
                 Tab_Item_Szukaj.Visibility = Visibility.Hidden;
                 Tab_Item_Widok.IsSelected = true;
@@ -1544,8 +1616,6 @@ namespace Sekretariat_Desktopowy
                 Tab_Item_Rekord.Visibility = Visibility.Visible;
             }
         }
-        private void Szukaj_Raport_Click(object sender, RoutedEventArgs e)
-        {
-        }
+        
     }
     }

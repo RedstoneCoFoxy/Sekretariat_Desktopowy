@@ -582,13 +582,15 @@ namespace Sekretariat_Desktopowy
         {
             SaveFileDialog Zapis = new SaveFileDialog();
 
-            Zapis.Filter = "Pliki bazy (*.baza)|*.baza";
+            Zapis.Filter = "Pliki bazy (*.baza)|*.baza"; //użyłem wlasnego rozszerzenia pliku, żeby użytkownik niemógł się pomylić przy zapisywaniu
             Zapis.FilterIndex = 2;
             Zapis.RestoreDirectory = true;
             if (Zapis.ShowDialog() == true)
             {
                 using(StreamWriter writer = new StreamWriter(Zapis.FileName))
                 {
+                    //każda tabela ma własną funkcje która zwraca rekord o danym indeksie już jako gotowy do zapisu, z poszczególnymi polami oddzielonymi znakiem specjalnym Ø
+                    //rozwiązuje to problem gdyby pojawiłby się znak biały w tekście
                     for (int i = 0; i < TableUczen.Length; i++)
                     {
                         writer.WriteLine(TableUczen[i].ReturnForSave());
@@ -608,6 +610,9 @@ namespace Sekretariat_Desktopowy
         }
         public void ZaladujRekordDoBazy(string line)
         {
+            //wszystkie dzialaja na tej samej zasadzie, roznią się jednyie iloscią pól które muszą prowadzic i do której tabeli
+            //najpierw sprawdza do której tabeli idzie U, N, P
+            //potem pierwsza czesc od początku do specjalnego znaku ( Ø ), jest wkladana, usuwa ten segment i idzie do następnego i tak az do konća
             if (line.StartsWith("U")){
                 Uczen[] TempTableUczen = new Uczen[1];
                 Uczen Temp = new Uczen();
@@ -749,6 +754,8 @@ namespace Sekretariat_Desktopowy
         }
         private void Plik_Wczytaj_Click(object sender, RoutedEventArgs e)
         {
+            //zwykle otwieranie pliki
+            //swtworzylem wlasne rozszerzenie .baza żeby użytkownik nie mógł otworzyć niepoprawnego pliku
             OpenFileDialog Otworz = new OpenFileDialog();
 
             Otworz.Filter = "Pliki bazy (*.baza)|*.baza";
@@ -766,9 +773,10 @@ namespace Sekretariat_Desktopowy
                     TablePracownik = new Pracownik[0];
                     while ((line = reader.ReadLine()) != null)
                     {
+                        //Sprawdzanie czy poszczególna linia w pliku własciwie pasuje do jednej z 3 tabel
                         if (line.StartsWith("U")|| line.StartsWith("N")|| line.StartsWith("P"))
                         {                           
-                            ZaladujRekordDoBazy(line);
+                            ZaladujRekordDoBazy(line); //wywoływanie funkcji która wlaściwie wprowadza rekordy do "Bazy" linia po lini
                             Tab_Item_Widok_TextBox.Text = line;
                         }                       
                     }
@@ -777,7 +785,7 @@ namespace Sekretariat_Desktopowy
                 }
             }
         }
-        private void Plik_Sortuj_Click(object sender, RoutedEventArgs e)
+        private void Plik_Sortuj_Click(object sender, RoutedEventArgs e) //przelaczanie na tab sortowania, chowając inne
         {
             Tab_Item_Sortuj.Visibility = Visibility.Visible;
             Tab_Item_Sortuj.IsSelected = true;
@@ -785,7 +793,7 @@ namespace Sekretariat_Desktopowy
             Tab_Item_Widok.Visibility = Visibility.Hidden;
             Tab_Item_Rekord.Visibility = Visibility.Hidden;
         }     
-            private void Sortuj_Wroc_Click(object sender, RoutedEventArgs e)
+        private void Sortuj_Wroc_Click(object sender, RoutedEventArgs e)
         {
             Tab_Item_Sortuj.Visibility = Visibility.Hidden;
             Tab_Item_Widok.IsSelected = true;
@@ -796,6 +804,8 @@ namespace Sekretariat_Desktopowy
 
         private void Sortuj_Gotowe_Click(object sender, RoutedEventArgs e)
         {
+            //Wybrany index wskazujący po którym polu tabeli sortowac
+            // i "Sort Type" który wskazuje ile tabel w sortowaniu bieze udzial
             int SelectedItemIndex=Sortuj_SelectBox.SelectedIndex;
             int SortType = 0;
             if (SelectedItemIndex <= 14) { SortType = 3; }
@@ -869,12 +879,11 @@ namespace Sekretariat_Desktopowy
                         zmienne = zmienne.Concat(temp).ToArray();
                     }
 
-                    Array.Sort(zmienne);
+                    Array.Sort(zmienne); //Gdy znalazlem tą funkcje, wpadłem na rozwiązanie
                     if (Sortuj_RadioMalejaco.IsChecked==true)
                     {
                         zmienne = zmienne.Reverse().ToArray();
-                    }
-                    //Gdy znalazlem tą funkcje, wpadłem na rozwiązanie
+                    }              
                     Tab_Item_Widok_TextBox.Text = "";
                     for (int U = 0; U < zmienne.Length; U++)
                     {                     

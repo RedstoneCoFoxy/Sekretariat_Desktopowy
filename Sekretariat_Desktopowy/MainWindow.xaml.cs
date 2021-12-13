@@ -802,6 +802,328 @@ namespace Sekretariat_Desktopowy
             Tab_Item_Rekord.Visibility = Visibility.Visible;
         }
 
+        void Sortuj(int Rodzaj, Uczen[] UczenTemp, Nauczyciel[] NauczycielTemp, Pracownik[] PracownikTemp, int WybranePole) //funkcja sortująca 
+        {
+            if (UczenTemp.Length + NauczycielTemp.Length + PracownikTemp.Length > 0)
+            {
+                string[] zmienne = new string[0];
+                for (int U = 0; U < UczenTemp.Length; U++)
+                {
+                    string[] temp = new string[1];
+                    switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                    {
+                        case 0: temp[0] = UczenTemp[U].Imie + U.ToString() + "U"; break;
+                        case 1: temp[0] = UczenTemp[U].DrugieImie + U.ToString() + "U"; break;
+                        case 2: temp[0] = UczenTemp[U].Nazwisko + U.ToString() + "U"; break;
+                        case 3: temp[0] = UczenTemp[U].NazwiskoPaniejskie + U.ToString() + "U"; break;
+                        case 4: temp[0] = UczenTemp[U].ImieMatki + U.ToString() + "U"; break;
+                        case 5: temp[0] = UczenTemp[U].ImieOjca + U.ToString() + "U"; break;
+                        case 6: temp[0] = UczenTemp[U].DataUrodzenia + U.ToString() + "U"; break;
+                        case 7: temp[0] = UczenTemp[U].Pesel + U.ToString() + "U"; break;
+                        case 8: temp[0] = UczenTemp[U].Plec + U.ToString() + "U"; break;
+                        case 9: temp[0] = UczenTemp[U].Klasa + U.ToString() + "U"; break;//klasa
+                        case 10: temp[0] = UczenTemp[U].Grupy + U.ToString() + "U"; break;//grupy
+                    }
+                    zmienne = zmienne.Concat(temp).ToArray();
+                }
+                for (int U = 0; U < NauczycielTemp.Length; U++)
+                {
+                    string[] temp = new string[1];
+                    switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                    {
+                        case 0: temp[0] = NauczycielTemp[U].Imie + U.ToString() + "N"; break;
+                        case 1: temp[0] = NauczycielTemp[U].DrugieImie + U.ToString() + "N"; break;
+                        case 2: temp[0] = NauczycielTemp[U].Nazwisko + U.ToString() + "N"; break;
+                        case 3: temp[0] = NauczycielTemp[U].NazwiskoPaniejskie + U.ToString() + "N"; break;
+                        case 4: temp[0] = NauczycielTemp[U].ImieMatki + U.ToString() + "N"; break;
+                        case 5: temp[0] = NauczycielTemp[U].ImieOjca + U.ToString() + "N"; break;
+                        case 6: temp[0] = NauczycielTemp[U].DataUrodzenia + U.ToString() + "N"; break;
+                        case 7: temp[0] = NauczycielTemp[U].Pesel + U.ToString() + "N"; break;
+                        case 8: temp[0] = NauczycielTemp[U].Plec + U.ToString() + "N"; break;
+                        case 11: temp[0] = NauczycielTemp[U].WychowawcaKlasa + U.ToString() + "N"; break;//Wychowawstwo
+                        case 12: temp[0] = NauczycielTemp[U].PrzedmiotyNauczane + U.ToString() + "N"; break;//Przedmioty
+                        case 13: temp[0] = NauczycielTemp[U].Zajecia + U.ToString() + "N"; break;//Zajecia
+                        case 14: temp[0] = NauczycielTemp[U].DataZatrudnienia + U.ToString() + "N"; break;//DataZatrudnienia
+                    }
+                    zmienne = zmienne.Concat(temp).ToArray();
+                }
+                for (int U = 0; U < PracownikTemp.Length; U++)
+                {
+                    string[] temp = new string[1];
+                    switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                    {
+                        case 0: temp[0] = PracownikTemp[U].Imie + U.ToString() + "P"; break;
+                        case 1: temp[0] = PracownikTemp[U].DrugieImie + U.ToString() + "P"; break;
+                        case 2: temp[0] = PracownikTemp[U].Nazwisko + U.ToString() + "P"; break;
+                        case 3: temp[0] = PracownikTemp[U].NazwiskoPaniejskie + U.ToString() + "P"; break;
+                        case 4: temp[0] = PracownikTemp[U].ImieMatki + U.ToString() + "P"; break;
+                        case 5: temp[0] = PracownikTemp[U].ImieOjca + U.ToString() + "P"; break;
+                        case 6: temp[0] = PracownikTemp[U].DataUrodzenia + U.ToString() + "P"; break;
+                        case 7: temp[0] = PracownikTemp[U].Pesel + U.ToString() + "P"; break;
+                        case 8: temp[0] = PracownikTemp[U].Plec + U.ToString() + "P"; break;
+                        case 14: temp[0] = PracownikTemp[U].DataZatrudnienia + U.ToString() + "P"; break;//DataZatrudnienia
+                        case 15: temp[0] = PracownikTemp[U].Etat + U.ToString() + "P"; break;//Etat
+                        case 16: temp[0] = PracownikTemp[U].Opis + U.ToString() + "P"; break;//Opis
+                    }
+                    zmienne = zmienne.Concat(temp).ToArray();
+                }
+
+                Array.Sort(zmienne); //Gdy znalazlem tą funkcje, wpadłem na rozwiązanie
+                if (Sortuj_RadioMalejaco.IsChecked == true)
+                {
+                    zmienne = zmienne.Reverse().ToArray();
+                }
+                Tab_Item_Widok_TextBox.Text = "";
+                for (int U = 0; U < zmienne.Length; U++)
+                {
+                    //W tej częsci jest dekodowanie i wypisywanie
+                    //2 ostatnie znaki, które zostały dodane wczesniej przed sortowaniem
+                    //są teraz sprawdzane, i jesli jest U to Uczen, N dla Nauczyciela, P Pracownik
+                    //Potem jest sprawdzana lizba, czy pod tym indexem jest wlasciwie ten rekord                      
+                    string String = zmienne[U];
+                    if (String.EndsWith("U"))
+                    {
+                        int i = Int32.Parse(String.Substring(String.Length - 2, 1));
+                        //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                        switch (WybranePole)
+                        {
+                            case 0:
+                                if (UczenTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 1:
+                                if (UczenTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 2:
+                                if (UczenTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 3:
+                                if (UczenTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 4:
+                                if (UczenTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 5:
+                                if (UczenTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 6:
+                                if (UczenTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 7:
+                                if (UczenTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 8:
+                                if (UczenTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 9://klasa
+                                if (UczenTemp[i].Klasa.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 10://grupy
+                                if (UczenTemp[i].Grupy.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                        }
+                    }
+                    if (String.EndsWith("N"))
+                    {
+                        int i = Int32.Parse(String.Substring(String.Length - 2, 1));
+                        //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                        switch (WybranePole)
+                        {
+                            case 0:
+                                if (NauczycielTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 1:
+                                if (NauczycielTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 2:
+                                if (NauczycielTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 3:
+                                if (NauczycielTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 4:
+                                if (NauczycielTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 5:
+                                if (NauczycielTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 6:
+                                if (NauczycielTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 7:
+                                if (NauczycielTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 8:
+                                if (NauczycielTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 11://Wychowawstwo
+                                if (NauczycielTemp[i].WychowawcaKlasa.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 12://Przedmioty
+                                if (NauczycielTemp[i].PrzedmiotyNauczane.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 13://Zajecia
+                                if (NauczycielTemp[i].Zajecia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 14://Data Zatrudnienia
+                                if (NauczycielTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                        }
+                    }
+                    if (String.EndsWith("P"))
+                    {
+                        int i = Int32.Parse(String.Substring(String.Length - 2, 1));
+                        //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
+                        switch (WybranePole)
+                        {
+                            case 0:
+                                if (PracownikTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 1:
+                                if (PracownikTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 2:
+                                if (PracownikTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 3:
+                                if (PracownikTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 4:
+                                if (PracownikTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 5:
+                                if (PracownikTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 6:
+                                if (PracownikTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 7:
+                                if (PracownikTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 8:
+                                if (PracownikTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 14://Data Zatrudnienia
+                                if (PracownikTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 15://Etat
+                                if (PracownikTemp[i].Etat.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                            case 16://Opis
+                                if (PracownikTemp[i].Opis.Equals(String.Remove(String.Length - 2).ToString()))
+                                {
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                }
+                                break;
+                        }
+                    }
+                }
+            }
+        }
         private void Sortuj_Gotowe_Click(object sender, RoutedEventArgs e)
         {
             //Wybrany index wskazujący po którym polu tabeli sortowac
@@ -812,332 +1134,27 @@ namespace Sekretariat_Desktopowy
             if (SelectedItemIndex == 15) { SortType = 2; }
             if (SelectedItemIndex > 15) { SortType = 1; }
             Sortuj(SortType,TableUczen,TableNauczyciel,TablePracownik,SelectedItemIndex);
-
-            void Sortuj(int Rodzaj, Uczen[] UczenTemp, Nauczyciel[] NauczycielTemp, Pracownik[] PracownikTemp,int WybranePole)
-            {               
-                if (UczenTemp.Length + NauczycielTemp.Length + PracownikTemp.Length > 0)
-                {
-                    string[] zmienne = new string[0];
-                    for (int U = 0; U < UczenTemp.Length; U++)
-                    {
-                        string[] temp = new string[1];
-                        switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                        {
-                            case 0: temp[0] = UczenTemp[U].Imie + U.ToString() + "U"; break;
-                            case 1: temp[0] = UczenTemp[U].DrugieImie + U.ToString() + "U"; break;
-                            case 2: temp[0] = UczenTemp[U].Nazwisko + U.ToString() + "U"; break;
-                            case 3: temp[0] = UczenTemp[U].NazwiskoPaniejskie + U.ToString() + "U"; break;
-                            case 4: temp[0] = UczenTemp[U].ImieMatki + U.ToString() + "U"; break;
-                            case 5: temp[0] = UczenTemp[U].ImieOjca + U.ToString() + "U"; break;
-                            case 6: temp[0] = UczenTemp[U].DataUrodzenia + U.ToString() + "U"; break;
-                            case 7: temp[0] = UczenTemp[U].Pesel + U.ToString() + "U"; break;
-                            case 8: temp[0] = UczenTemp[U].Plec + U.ToString() + "U"; break;
-                            case 9: temp[0] = UczenTemp[U].Klasa + U.ToString() + "U"; break;//klasa
-                            case 10: temp[0] = UczenTemp[U].Grupy + U.ToString() + "U"; break;//grupy
-                        }
-                        zmienne = zmienne.Concat(temp).ToArray();
-                    }
-                    for (int U = 0; U < NauczycielTemp.Length; U++)
-                    {
-                        string[] temp = new string[1];
-                        switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                        {
-                            case 0: temp[0] = NauczycielTemp[U].Imie + U.ToString() + "N"; break;
-                            case 1: temp[0] = NauczycielTemp[U].DrugieImie + U.ToString() + "N"; break;
-                            case 2: temp[0] = NauczycielTemp[U].Nazwisko + U.ToString() + "N"; break;
-                            case 3: temp[0] = NauczycielTemp[U].NazwiskoPaniejskie + U.ToString() + "N"; break;
-                            case 4: temp[0] = NauczycielTemp[U].ImieMatki + U.ToString() + "N"; break;
-                            case 5: temp[0] = NauczycielTemp[U].ImieOjca + U.ToString() + "N"; break;
-                            case 6: temp[0] = NauczycielTemp[U].DataUrodzenia + U.ToString() + "N"; break;
-                            case 7: temp[0] = NauczycielTemp[U].Pesel + U.ToString() + "N"; break;
-                            case 8: temp[0] = NauczycielTemp[U].Plec + U.ToString() + "N"; break;
-                            case 11: temp[0] = NauczycielTemp[U].WychowawcaKlasa + U.ToString() + "N"; break;//Wychowawstwo
-                            case 12: temp[0] = NauczycielTemp[U].PrzedmiotyNauczane + U.ToString() + "N"; break;//Przedmioty
-                            case 13: temp[0] = NauczycielTemp[U].Zajecia + U.ToString() + "N"; break;//Zajecia
-                            case 14: temp[0] = NauczycielTemp[U].DataZatrudnienia + U.ToString() + "N"; break;//DataZatrudnienia
-                        }
-                        zmienne = zmienne.Concat(temp).ToArray();
-                    }
-                    for (int U = 0; U < PracownikTemp.Length; U++)
-                    {
-                        string[] temp = new string[1];
-                        switch (WybranePole) //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                        {
-                            case 0: temp[0] = PracownikTemp[U].Imie + U.ToString() + "P"; break;
-                            case 1: temp[0] = PracownikTemp[U].DrugieImie + U.ToString() + "P"; break;
-                            case 2: temp[0] = PracownikTemp[U].Nazwisko + U.ToString() + "P"; break;
-                            case 3: temp[0] = PracownikTemp[U].NazwiskoPaniejskie + U.ToString() + "P"; break;
-                            case 4: temp[0] = PracownikTemp[U].ImieMatki + U.ToString() + "P"; break;
-                            case 5: temp[0] = PracownikTemp[U].ImieOjca + U.ToString() + "P"; break;
-                            case 6: temp[0] = PracownikTemp[U].DataUrodzenia + U.ToString() + "P"; break;
-                            case 7: temp[0] = PracownikTemp[U].Pesel + U.ToString() + "P"; break;
-                            case 8: temp[0] = PracownikTemp[U].Plec + U.ToString() + "P"; break;
-                            case 14: temp[0] = PracownikTemp[U].DataZatrudnienia + U.ToString() + "P"; break;//DataZatrudnienia
-                            case 15: temp[0] = PracownikTemp[U].Etat + U.ToString() + "P"; break;//Etat
-                            case 16: temp[0] = PracownikTemp[U].Opis + U.ToString() + "P"; break;//Opis
-                        }
-                        zmienne = zmienne.Concat(temp).ToArray();
-                    }
-
-                    Array.Sort(zmienne); //Gdy znalazlem tą funkcje, wpadłem na rozwiązanie
-                    if (Sortuj_RadioMalejaco.IsChecked==true)
-                    {
-                        zmienne = zmienne.Reverse().ToArray();
-                    }              
-                    Tab_Item_Widok_TextBox.Text = "";
-                    for (int U = 0; U < zmienne.Length; U++)
-                    {                     
-                        //W tej częsci jest dekodowanie i wypisywanie
-                        //2 ostatnie znaki, które zostały dodane wczesniej przed sortowaniem
-                        //są teraz sprawdzane, i jesli jest U to Uczen, N dla Nauczyciela, P Pracownik
-                        //Potem jest sprawdzana lizba, czy pod tym indexem jest wlasciwie ten rekord                      
-                        string String = zmienne[U];
-                        if (String.EndsWith("U"))
-                        {
-                            int i = Int32.Parse(String.Substring(String.Length - 2, 1));
-                            //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                            switch (WybranePole)
-                            {
-                                case 0:
-                                    if (UczenTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                       Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";                                   
-                                    }
-                                    break;
-                                case 1:
-                                    if (UczenTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 2:
-                                    if (UczenTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 3:
-                                    if (UczenTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 4:
-                                    if (UczenTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 5:
-                                    if (UczenTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 6:
-                                    if (UczenTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2)+"\n";
-                                    }
-                                    break;
-                                case 7:
-                                    if (UczenTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 8:
-                                    if (UczenTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 9://klasa
-                                    if (UczenTemp[i].Klasa.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 10://grupy
-                                    if (UczenTemp[i].Grupy.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                            }
-                        }
-                        if (String.EndsWith("N"))
-                        {
-                            int i = Int32.Parse(String.Substring(String.Length - 2, 1));
-                            //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                            switch (WybranePole)
-                            {
-                                case 0:
-                                    if (NauczycielTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 1:
-                                    if (NauczycielTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 2:
-                                    if (NauczycielTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 3:
-                                    if (NauczycielTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 4:
-                                    if (NauczycielTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 5:
-                                    if (NauczycielTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 6:
-                                    if (NauczycielTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 7:
-                                    if (NauczycielTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 8:
-                                    if (NauczycielTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 11://Wychowawstwo
-                                    if (NauczycielTemp[i].WychowawcaKlasa.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 12://Przedmioty
-                                    if (NauczycielTemp[i].PrzedmiotyNauczane.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 13://Zajecia
-                                    if (NauczycielTemp[i].Zajecia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 14://Data Zatrudnienia
-                                    if (NauczycielTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                            }
-                        }
-                        if (String.EndsWith("P"))
-                        {
-                            int i = Int32.Parse(String.Substring(String.Length - 2, 1));
-                            //MEGA switch sprawdzający wszystkie mozliwe pola jakie uzytkownik mogl wybrac w sortowaniu
-                            switch (WybranePole) 
-                            {
-                                case 0:
-                                    if (PracownikTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 1:
-                                    if (PracownikTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 2:
-                                    if (PracownikTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 3:
-                                    if (PracownikTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 4:
-                                    if (PracownikTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 5:
-                                    if (PracownikTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 6:
-                                    if (PracownikTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 7:
-                                    if (PracownikTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 8:
-                                    if (PracownikTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 14://Data Zatrudnienia
-                                    if (PracownikTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 15://Etat
-                                    if (PracownikTemp[i].Etat.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                                case 16://Opis
-                                    if (PracownikTemp[i].Opis.Equals(String.Remove(String.Length - 2).ToString()))
-                                    {
-                                        Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
-                                    }
-                                    break;
-                            }
-                        }
-                    }
-                }
-        }
+            
             //if (TableUczen[X].Imie.Equals(String.Remove(String.Length - 1)))                             
             //Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text +
             Tab_Item_Sortuj.Visibility = Visibility.Hidden;
+            Tab_Item_Widok.IsSelected = true;
+
+            Tab_Item_Widok.Visibility = Visibility.Visible;
+            Tab_Item_Rekord.Visibility = Visibility.Visible;
+        }
+
+        private void Plik_Szukaj_Click(object sender, RoutedEventArgs e) //przelaczanie na tab szukania, chowając inne
+        {
+            Tab_Item_Szukaj.Visibility = Visibility.Visible;
+            Tab_Item_Szukaj.IsSelected = true;
+
+            Tab_Item_Widok.Visibility = Visibility.Hidden;
+            Tab_Item_Rekord.Visibility = Visibility.Hidden;
+        }
+        private void Szukaj_Wroc_Click(object sender, RoutedEventArgs e)
+        {
+            Tab_Item_Szukaj.Visibility = Visibility.Hidden;
             Tab_Item_Widok.IsSelected = true;
 
             Tab_Item_Widok.Visibility = Visibility.Visible;

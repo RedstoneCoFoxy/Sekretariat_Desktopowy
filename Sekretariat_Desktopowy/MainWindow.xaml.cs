@@ -227,8 +227,10 @@ namespace Sekretariat_Desktopowy
                 string Plec = "";
                 if (Uczen_PlecM.IsChecked==true) { Plec = "Mężczyzna"; };
                 if (Uczen_PlecK.IsChecked == true) { Plec = "Kobieta"; };
+
                 string Data;
                 Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Uczen_Imie.Text;
                 Temp.Nazwisko = Uczen_Nazwisko.Text;
@@ -362,7 +364,8 @@ namespace Sekretariat_Desktopowy
                 if (Nauczyciel_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
                 if (Nauczyciel_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
-                Data = Nauczyciel_DataUrodzenia.ToString();
+                Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Nauczyciel_Imie.Text;
                 Temp.Nazwisko = Nauczyciel_Nazwisko.Text;
@@ -371,7 +374,7 @@ namespace Sekretariat_Desktopowy
                 Temp.Plec = Plec;
                 Temp.Zdjecie = NauczycielWybraneZdjecie;
                 Temp.PrzedmiotyNauczane = Nauczyciel_PrzedmiotyNauczane.Text;
-                Temp.DataZatrudnienia = Nauczyciel_DataZatrudnienia.ToString();
+                Temp.DataZatrudnienia = Nauczyciel_DataZatrudnienia.ToString().Substring(0, 10);
 
                 if (Nauczyciel_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
                 else { Temp.DrugieImie = Nauczyciel_DrugieImie.Text; };
@@ -509,7 +512,8 @@ namespace Sekretariat_Desktopowy
                 if (Pracownik_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
                 if (Pracownik_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
-                Data = Nauczyciel_DataUrodzenia.ToString();
+                Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Pracownik_Imie.Text;
                 Temp.Nazwisko = Pracownik_Nazwisko.Text;
@@ -519,7 +523,7 @@ namespace Sekretariat_Desktopowy
                 Temp.Zdjecie = PracownikWybraneZdjecie;
                 Temp.Opis = Pracownik_Opis.Text;
                 Temp.Etat = Pracownik_Etat.Text;
-                Temp.DataZatrudnienia = Pracownik_DataZatrudnienia.ToString();
+                Temp.DataZatrudnienia = Pracownik_DataZatrudnienia.ToString().Substring(0, 10);
 
                 if (Pracownik_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
                 else { Temp.DrugieImie = Pracownik_DrugieImie.Text; };
@@ -1135,8 +1139,6 @@ namespace Sekretariat_Desktopowy
             if (SelectedItemIndex > 15) { SortType = 1; }
             Sortuj(SortType,TableUczen,TableNauczyciel,TablePracownik,SelectedItemIndex);
             
-            //if (TableUczen[X].Imie.Equals(String.Remove(String.Length - 1)))                             
-            //Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text +
             Tab_Item_Sortuj.Visibility = Visibility.Hidden;
             Tab_Item_Widok.IsSelected = true;
 
@@ -1159,6 +1161,137 @@ namespace Sekretariat_Desktopowy
 
             Tab_Item_Widok.Visibility = Visibility.Visible;
             Tab_Item_Rekord.Visibility = Visibility.Visible;
+        }
+
+        private void Szukaj_Gotowe_Click(object sender, RoutedEventArgs e)
+        {         
+            int SelectedSortIndex = SzukajSortuj_SelectBox.SelectedIndex;
+
+            int SelectedSearchIndex = SzukajPo_SelectBox.SelectedIndex;
+            int SelectedSearchTypeIndex = SzukajSposob_SelectBox.SelectedIndex;
+            string Filtr = Szukaj_Filtr.Text;
+            bool okej = true;
+
+            Uczen[] TempUczen = new Uczen[0];
+            Nauczyciel[] TempNauczyciel = new Nauczyciel[0];
+            Pracownik[] TempPracownik = new Pracownik[0];
+            if ((SelectedSearchIndex != 6 || SelectedSearchIndex != 14 )&& (SelectedSearchTypeIndex == 4 || SelectedSearchTypeIndex==5))
+            {
+                okej = false;
+                SzukajPo_SelectBox.Foreground = Brushes.Red;
+                SzukajSposob_SelectBox.Foreground = Brushes.Red;
+                Szukaj_ErrorLabel.Content = "Nie Zgodne Kryteria";
+            }
+            else
+            {
+                SzukajPo_SelectBox.Foreground = Brushes.Black;
+                SzukajSposob_SelectBox.Foreground = Brushes.Black;
+                Szukaj_ErrorLabel.Content = "";
+            }          
+
+            if (okej) { 
+            for(int i = 0; i < TableUczen.Length; i++)
+                {
+                    string wartosc="";
+                    switch (SelectedSearchIndex)
+                    {
+                        case 0:
+                            wartosc = TableUczen[i].Imie;
+                            break;
+                        case 1:
+                            wartosc = TableUczen[i].DrugieImie;
+                            break;
+                        case 2:
+                            wartosc = TableUczen[i].Nazwisko;
+                            break;
+                        case 3:
+                            wartosc = TableUczen[i].NazwiskoPaniejskie;
+                            break;
+                        case 4:
+                            wartosc = TableUczen[i].ImieMatki;
+                            break;
+                        case 5:
+                            wartosc = TableUczen[i].ImieOjca;
+                            break;
+                        case 6:
+                            wartosc = TableUczen[i].DataUrodzenia;
+                            break;
+                        case 7:
+                            wartosc = TableUczen[i].Pesel;
+                            break;
+                        case 8:
+                            wartosc = TableUczen[i].Plec;
+                            break;
+                        default:
+                            break;
+
+                        case 9:
+                            wartosc = TableUczen[i].Klasa;
+                            break;
+                        case 10:
+                            wartosc = TableUczen[i].Grupy;
+                            break;
+                    }
+                    Uczen[] TempTempUczen = new Uczen[1];
+                    bool Good = false;
+                    switch (SelectedSearchTypeIndex)
+                    {
+                        case 0:
+                            if (wartosc.Contains(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 1:
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                    }
+                    if (Good)
+                    {
+                        TempTempUczen[0] = TableUczen[i];
+                        TempUczen = TempUczen.Concat(TempTempUczen).ToArray();
+                    }
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            int SortType = 0; //cześciowo przekopiowany kod z sortowania
+
+            if (SelectedSortIndex != 17) { 
+                if (SelectedSortIndex <= 14) { SortType = 3; }
+                if (SelectedSortIndex == 15) { SortType = 2; }
+                if (SelectedSortIndex > 15) { SortType = 1; }
+                Sortuj(SortType, TempUczen, TempNauczyciel, TempPracownik, SelectedSortIndex);
+            }
+                Tab_Item_Szukaj.Visibility = Visibility.Hidden;
+                Tab_Item_Widok.IsSelected = true;
+
+                Tab_Item_Widok.Visibility = Visibility.Visible;
+                Tab_Item_Rekord.Visibility = Visibility.Visible;
+            }
+        }
+        private void Szukaj_Raport_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
     }

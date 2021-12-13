@@ -245,7 +245,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem x:Name="Tab_Item_Szukaj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Visible">
+            <TabItem x:Name="Tab_Item_Szukaj" Background="#FFEFE9FF" FontSize="16" Margin="-120,0,116,-2" Visibility="Hidden">
                 <TabItem.Header>
                     Szukaj
                 </TabItem.Header>
@@ -258,7 +258,7 @@
                     <Button x:Name="Szukaj_Wroc" Margin="10,10,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Szukaj_Wroc_Click">
                         Wróc
                     </Button>
-                    <ComboBox x:Name="SzukajSposob_SelectBox" Margin="217,52,631,304" Background="#FFEFE9FF" FontSize="16" SelectedIndex="0" Grid.ColumnSpan="2">
+                    <ComboBox x:Name="SzukajSposob_SelectBox" Margin="217,52,631,294" Background="#FFEFE9FF" FontSize="16" SelectedIndex="0" Grid.ColumnSpan="2">
                         <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Zawiera</TextBlock>
@@ -290,7 +290,7 @@
                             </StackPanel>
                         </ComboBoxItem>
                     </ComboBox>
-                    <ComboBox x:Name="SzukajPo_SelectBox" Margin="10,52,114,304" Background="#FFEFE9FF" FontSize="16" SelectedIndex="0">
+                    <ComboBox x:Name="SzukajPo_SelectBox" Margin="10,52,114,294" Background="#FFEFE9FF" FontSize="16" SelectedIndex="0">
                         <ComboBoxItem Background="#FFEFE9FF" FontSize="16">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock>Imie</TextBlock>
@@ -474,8 +474,10 @@
                     <RadioButton IsChecked="True" x:Name="Szukaj_RadioRosnaco" GroupName="SortowanieRosnaco"  Height="36" Width="90" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="133,105,0,0" Content="Rosnąco" Grid.Column="1"/>
 
                     <Label Height="36" Width="230" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="12" Margin="10,153,0,0">*Nie wszystkie tabele zawierają</Label>
-                    <Button x:Name="Szukaj_Gotowe" Margin="10,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Gotowe_Click" Content="Gotowe"/>
-                    <Button x:Name="Szukaj_Raport" Margin="184,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Sortuj_Gotowe_Click" Content="Zapizs wynik" Grid.ColumnSpan="2"/>
+                    <Button x:Name="Szukaj_Gotowe" Margin="10,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Szukaj_Gotowe_Click" Content="Gotowe"/>
+                    <Button x:Name="Szukaj_Raport" Margin="184,189,0,0" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Top" HorizontalAlignment="Left" Click="Szukaj_Raport_Click" Content="Zapizs wynik" Grid.ColumnSpan="2"/>
+
+                    <Label x:Name="Szukaj_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -22,7 +22,7 @@ namespace Sekretariat_Desktopowy
         public MainWindow()
         {
             InitializeComponent();
-            Update_Widok();
+            Update_Widok(TableUczen,TableNauczyciel,TablePracownik);
         }
         //deklaracja obiektów poszcególnych osób
         public class Uczen {
@@ -48,6 +48,8 @@ namespace Sekretariat_Desktopowy
                 string Temp="";
                 Temp = Temp + Rodzaj + "Ø";
                 Temp = Temp + Imie + "Ø";
+
+                Temp = Temp + DrugieImie + "Ø";
                 Temp = Temp + Nazwisko + "Ø";
                 Temp = Temp + NazwiskoPaniejskie + "Ø";
                 Temp = Temp + ImieOjca + "Ø";
@@ -59,8 +61,25 @@ namespace Sekretariat_Desktopowy
                 Temp = Temp + Grupy + "Ø";
                 return Temp;
             }
-
+            public string ReturnForPrint()
+            {
+                string Temp = "";
+                Temp = Temp + "Imie: " + Imie + " ";
+                Temp = Temp + "D.Imie: " + DrugieImie + " ";
+                Temp = Temp + "Nazwisko: " + Nazwisko + " ";
+                Temp = Temp + "N.Paniejskie: " + NazwiskoPaniejskie + " ";
+                Temp = Temp + "I.Ojca: " + ImieOjca + " ";
+                Temp = Temp + "I.Matki: " + ImieMatki + " ";
+                Temp = Temp + "Data Urodzenia: " + DataUrodzenia + " ";
+                Temp = Temp + "Pesel: " + Pesel + " ";
+                Temp = Temp + "Plec: " + Plec + " ";
+                Temp = Temp + "Klasa: " + Klasa + " ";
+                Temp = Temp + "Grupy: " + Grupy + " ";
+                Temp = Temp + "\n";
+                return Temp;
             }
+
+        }
         public class Nauczyciel
         {
 
@@ -87,6 +106,7 @@ namespace Sekretariat_Desktopowy
                 string Temp = "";
                 Temp = Temp + Rodzaj + "Ø";
                 Temp = Temp + Imie + "Ø";
+                Temp = Temp + DrugieImie + "Ø";
                 Temp = Temp + Nazwisko + "Ø";
                 Temp = Temp + NazwiskoPaniejskie + "Ø";
                 Temp = Temp + ImieOjca + "Ø";
@@ -98,6 +118,25 @@ namespace Sekretariat_Desktopowy
                 Temp = Temp + PrzedmiotyNauczane + "Ø";
                 Temp = Temp + Zajecia + "Ø";
                 Temp = Temp + DataZatrudnienia + "Ø";
+                return Temp;
+            }
+            public string ReturnForPrint()
+            {
+                string Temp = "";
+                Temp = Temp + "Imie: " + Imie + " ";
+                Temp = Temp + "D.Imie: " + DrugieImie + " ";
+                Temp = Temp + "Nazwisko: " + Nazwisko + " ";
+                Temp = Temp + "N.Paniejskie: " + NazwiskoPaniejskie + " ";
+                Temp = Temp + "I.Ojca: " + ImieOjca + " ";
+                Temp = Temp + "I.Matki: " + ImieMatki + " ";
+                Temp = Temp + "Data Urodzenia: " + DataUrodzenia + " ";
+                Temp = Temp + "Pesel: " + Pesel + " ";
+                Temp = Temp + "Plec: " + Plec + " ";
+                Temp = Temp + "Wychowawstwo: " + WychowawcaKlasa + " ";
+                Temp = Temp + "P. Nauczane: " + PrzedmiotyNauczane + " ";
+                Temp = Temp + "Zajecia: " + Zajecia + " ";
+                Temp = Temp + "Data Zatrudnienia: " + DataZatrudnienia + " ";
+                Temp = Temp + "\n";
                 return Temp;
             }
         }
@@ -125,6 +164,7 @@ namespace Sekretariat_Desktopowy
                 string Temp = "";
                 Temp = Temp + Rodzaj + "Ø";
                 Temp = Temp + Imie + "Ø";
+                Temp = Temp + DrugieImie + "Ø";
                 Temp = Temp + Nazwisko + "Ø";
                 Temp = Temp + NazwiskoPaniejskie + "Ø";
                 Temp = Temp + ImieOjca + "Ø";
@@ -135,6 +175,24 @@ namespace Sekretariat_Desktopowy
                 Temp = Temp + Etat + "Ø";
                 Temp = Temp + Opis + "Ø";
                 Temp = Temp + DataZatrudnienia + "Ø";
+                return Temp;
+            }
+            public string ReturnForPrint()
+            {
+                string Temp = "";
+                Temp = Temp + "Imie: " + Imie + " ";
+                Temp = Temp + "D.Imie: " + DrugieImie + " ";
+                Temp = Temp + "Nazwisko: " + Nazwisko + " ";
+                Temp = Temp + "N.Paniejskie: " + NazwiskoPaniejskie + " ";
+                Temp = Temp + "I.Ojca: " + ImieOjca + " ";
+                Temp = Temp + "I.Matki: " + ImieMatki + " ";
+                Temp = Temp + "Data Urodzenia: " + DataUrodzenia + " ";
+                Temp = Temp + "Pesel: " + Pesel + " ";
+                Temp = Temp + "Plec: " + Plec + " ";
+                Temp = Temp + "Etat: " + Etat + " ";
+                Temp = Temp + "Opis: " + Opis + " ";
+                Temp = Temp + "Data Zatrudnienia: " + DataZatrudnienia + " ";
+                Temp = Temp + "\n";
                 return Temp;
             }
         }
@@ -149,22 +207,22 @@ namespace Sekretariat_Desktopowy
         Pracownik[] TablePracownik = new Pracownik[0];
 
         //Uaktualnia Widok "Bazy"
-        public void Update_Widok()
+        public void Update_Widok(Uczen[] TempUczen, Nauczyciel[] TempNauczyciel, Pracownik[] TempPracownik)
         {
             Tab_Item_Widok_TextBox.Text = "";
-            if (TableUczen.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+ "Brak rekordów Uczniów\n"; };
-            for (int i = 0; i < TableUczen.Length; i++) { 
-                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableUczen[i].Imie +" " + TableUczen[i].DrugieImie + " " + TableUczen[i].Nazwisko + " " + TableUczen[i].NazwiskoPaniejskie + " " + TableUczen[i].ImieOjca + " " + TableUczen[i].ImieMatki + " " + TableUczen[i].DataUrodzenia + " " + TableUczen[i].Pesel + " " + TableUczen[i].Plec + " " + TableUczen[i].Klasa + " " + TableUczen[i].Grupy + "\n";
+            if (TempUczen.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+ "Brak rekordów Uczniów\n"; };
+            for (int i = 0; i < TempUczen.Length; i++) {
+                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TempUczen[i].ReturnForPrint();
             }
-            if (TableNauczyciel.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+"Brak rekordów Nauczycieli\n"; };
-            for (int i = 0; i < TableNauczyciel.Length; i++)
+            if (TempNauczyciel.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text+"Brak rekordów Nauczycieli\n"; };
+            for (int i = 0; i < TempNauczyciel.Length; i++)
             {
-                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TableNauczyciel[i].Imie + " " + TableNauczyciel[i].DrugieImie + " " + TableNauczyciel[i].Nazwisko + " " + TableNauczyciel[i].NazwiskoPaniejskie + " " + TableNauczyciel[i].ImieOjca + " " + TableNauczyciel[i].ImieMatki + " " + TableNauczyciel[i].DataUrodzenia + " " + TableNauczyciel[i].Pesel + " " + TableNauczyciel[i].Plec + " " + TableNauczyciel[i].DataZatrudnienia + " " + TableNauczyciel[i].PrzedmiotyNauczane + " " + TableNauczyciel[i].WychowawcaKlasa + " " + TableNauczyciel[i].Zajecia + "\n";
+                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TempNauczyciel[i].ReturnForPrint();
             }
-            if (TablePracownik.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + "Brak rekordów Pracowników\n"; };
-            for (int i = 0; i < TablePracownik.Length; i++)
+            if (TempPracownik.Length == 0) { Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + "Brak rekordów Pracowników\n"; };
+            for (int i = 0; i < TempPracownik.Length; i++)
             {
-                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TablePracownik[i].Imie + " " + TablePracownik[i].DrugieImie + " " + TablePracownik[i].Nazwisko + " " + TablePracownik[i].NazwiskoPaniejskie + " " + TablePracownik[i].ImieOjca + " " + TablePracownik[i].ImieMatki + " " + TablePracownik[i].DataUrodzenia + " " + TablePracownik[i].Pesel + " " + TablePracownik[i].Plec + " " + TablePracownik[i].DataZatrudnienia + " " + TablePracownik[i].Etat + " " + TablePracownik[i].Opis + "\n";
+                Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TempPracownik[i].ReturnForPrint();
             }
         }    
         private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
@@ -276,7 +334,7 @@ namespace Sekretariat_Desktopowy
                 Uczen_DataUrodzenia.SelectedDate = null;
                 Uczen_Zdjecie.Source = null;
 
-                Update_Widok();
+                Update_Widok(TableUczen,TableNauczyciel,TablePracownik);
             }
         }
         private void Uczen_WyborZdjecia_Click1(object sender, RoutedEventArgs e)
@@ -416,7 +474,7 @@ namespace Sekretariat_Desktopowy
                 Nauczyciel_DataUrodzenia.SelectedDate = null;
                 Nauczyciel_Zdjecia.Source = null;
 
-                Update_Widok();
+                Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
             }
      
         }
@@ -559,7 +617,7 @@ namespace Sekretariat_Desktopowy
                 Pracownik_DataUrodzenia.SelectedDate = null;
                 Pracownik_Zdjecia.Source = null;
 
-                Update_Widok();
+                Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
             }
         }
         private void Pracownik_WyborZdjecia_Click(object sender, RoutedEventArgs e)
@@ -784,7 +842,7 @@ namespace Sekretariat_Desktopowy
                             Tab_Item_Widok_TextBox.Text = line;
                         }                       
                     }
-                    Update_Widok();
+                    Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
                     reader.Close();
                 }
             }
@@ -894,67 +952,67 @@ namespace Sekretariat_Desktopowy
                             case 0:
                                 if (UczenTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (UczenTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (UczenTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (UczenTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (UczenTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (UczenTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (UczenTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (UczenTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (UczenTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 9://klasa
                                 if (UczenTemp[i].Klasa.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 10://grupy
                                 if (UczenTemp[i].Grupy.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + UczenTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
@@ -968,79 +1026,79 @@ namespace Sekretariat_Desktopowy
                             case 0:
                                 if (NauczycielTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (NauczycielTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (NauczycielTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (NauczycielTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (NauczycielTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (NauczycielTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (NauczycielTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (NauczycielTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (NauczycielTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 11://Wychowawstwo
                                 if (NauczycielTemp[i].WychowawcaKlasa.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 12://Przedmioty
                                 if (NauczycielTemp[i].PrzedmiotyNauczane.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 13://Zajecia
                                 if (NauczycielTemp[i].Zajecia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 14://Data Zatrudnienia
                                 if (NauczycielTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + NauczycielTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
@@ -1054,73 +1112,73 @@ namespace Sekretariat_Desktopowy
                             case 0:
                                 if (PracownikTemp[i].Imie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 1:
                                 if (PracownikTemp[i].DrugieImie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 2:
                                 if (PracownikTemp[i].Nazwisko.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 3:
                                 if (PracownikTemp[i].NazwiskoPaniejskie.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 4:
                                 if (PracownikTemp[i].ImieMatki.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 5:
                                 if (PracownikTemp[i].ImieOjca.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 6:
                                 if (PracownikTemp[i].DataUrodzenia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 7:
                                 if (PracownikTemp[i].Pesel.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 8:
                                 if (PracownikTemp[i].Plec.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 14://Data Zatrudnienia
                                 if (PracownikTemp[i].DataZatrudnienia.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 15://Etat
                                 if (PracownikTemp[i].Etat.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                             case 16://Opis
                                 if (PracownikTemp[i].Opis.Equals(String.Remove(String.Length - 2).ToString()))
                                 {
-                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForSave().Replace("Ø", " ").Substring(2) + "\n";
+                                    Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + PracownikTemp[i].ReturnForPrint();
                                 }
                                 break;
                         }
@@ -1243,14 +1301,34 @@ namespace Sekretariat_Desktopowy
                             }
                             break;
                         case 1:
+                            if (wartosc==Filtr)
+                            {
+                                Good = true;
+                            }
                             break;
                         case 2:
+                            if (wartosc.EndsWith(Filtr))
+                            {
+                                Good = true;
+                            }
                             break;
                         case 3:
+                            if (wartosc.StartsWith(Filtr))
+                            {
+                                Good = true;
+                            }
                             break;
                         case 4:
+                            if (string.Compare(Filtr, wartosc) ==1)
+                            {
+                                Good = true;
+                            }
                             break;
                         case 5:
+                            if (string.Compare(wartosc, Filtr) == 1)
+                            {
+                                Good = true;
+                            }
                             break;
                     }
                     if (Good)
@@ -1259,30 +1337,206 @@ namespace Sekretariat_Desktopowy
                         TempUczen = TempUczen.Concat(TempTempUczen).ToArray();
                     }
                 }
+            for (int i = 0; i < TableNauczyciel.Length; i++)
+                {
+                    string wartosc = "";
+                    switch (SelectedSearchIndex)
+                    {
+                        case 0:
+                            wartosc = TableNauczyciel[i].Imie;
+                            break;
+                        case 1:
+                            wartosc = TableNauczyciel[i].DrugieImie;
+                            break;
+                        case 2:
+                            wartosc = TableNauczyciel[i].Nazwisko;
+                            break;
+                        case 3:
+                            wartosc = TableNauczyciel[i].NazwiskoPaniejskie;
+                            break;
+                        case 4:
+                            wartosc = TableNauczyciel[i].ImieMatki;
+                            break;
+                        case 5:
+                            wartosc = TableNauczyciel[i].ImieOjca;
+                            break;
+                        case 6:
+                            wartosc = TableNauczyciel[i].DataUrodzenia;
+                            break;
+                        case 7:
+                            wartosc = TableNauczyciel[i].Pesel;
+                            break;
+                        case 8:
+                            wartosc = TableNauczyciel[i].Plec;
+                            break;
+                        default:
+                            break;
 
+                        case 11:
+                            wartosc = TableNauczyciel[i].WychowawcaKlasa;
+                            break;
+                        case 12:
+                            wartosc = TableNauczyciel[i].PrzedmiotyNauczane;
+                            break;
+                        case 13:
+                            wartosc = TableNauczyciel[i].Zajecia;
+                            break;
+                        case 14:
+                            wartosc = TableNauczyciel[i].DataZatrudnienia;
+                            break;
+                    }
+                    Nauczyciel[] TempTempNauczyciel = new Nauczyciel[1];
+                    bool Good = false;
+                    switch (SelectedSearchTypeIndex)
+                    {
+                        case 0:
+                            if (wartosc.Contains(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 1:
+                            if (wartosc == Filtr)
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 2:
+                            if (wartosc.EndsWith(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 3:
+                            if (wartosc.StartsWith(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 4:
+                            if (string.Compare(Filtr, wartosc) == 1)
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 5:
+                            if (string.Compare(wartosc, Filtr) == 1)
+                            {
+                                Good = true;
+                            }
+                            break;
+                    }
+                    if (Good)
+                    {
+                        TempTempNauczyciel[0] = TableNauczyciel[i];
+                        TempNauczyciel = TempNauczyciel.Concat(TempTempNauczyciel).ToArray();
+                    }
+                }
+            for (int i = 0; i < TablePracownik.Length; i++)
+                {
+                    string wartosc = "";
+                    switch (SelectedSearchIndex)
+                    {
+                        case 0:
+                            wartosc = TablePracownik[i].Imie;
+                            break;
+                        case 1:
+                            wartosc = TablePracownik[i].DrugieImie;
+                            break;
+                        case 2:
+                            wartosc = TablePracownik[i].Nazwisko;
+                            break;
+                        case 3:
+                            wartosc = TablePracownik[i].NazwiskoPaniejskie;
+                            break;
+                        case 4:
+                            wartosc = TablePracownik[i].ImieMatki;
+                            break;
+                        case 5:
+                            wartosc = TablePracownik[i].ImieOjca;
+                            break;
+                        case 6:
+                            wartosc = TablePracownik[i].DataUrodzenia;
+                            break;
+                        case 7:
+                            wartosc = TablePracownik[i].Pesel;
+                            break;
+                        case 8:
+                            wartosc = TablePracownik[i].Plec;
+                            break;
+                        default:
+                            break;
 
+                        case 14:
+                            wartosc = TablePracownik[i].DataZatrudnienia;
+                            break;
+                        case 15:
+                            wartosc = TablePracownik[i].Etat;
+                            break;
+                        case 16:
+                            wartosc = TablePracownik[i].Opis;
+                            break;
+                    }
+                    Pracownik[] TempTempPracownik = new Pracownik[1];
+                    bool Good = false;
+                    switch (SelectedSearchTypeIndex)
+                    {
+                        case 0:
+                            if (wartosc.Contains(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 1:
+                            if (wartosc == Filtr)
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 2:
+                            if (wartosc.EndsWith(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 3:
+                            if (wartosc.StartsWith(Filtr))
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 4:
+                            if (string.Compare(Filtr, wartosc) == 1)
+                            {
+                                Good = true;
+                            }
+                            break;
+                        case 5:
+                            if (string.Compare(wartosc, Filtr) == 1)
+                            {
+                                Good = true;
+                            }
+                            break;
+                    }
+                    if (Good)
+                    {
+                        TempTempPracownik[0] = TablePracownik[i];
+                        TempPracownik = TempPracownik.Concat(TempTempPracownik).ToArray();
+                    }
+                }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-            int SortType = 0; //cześciowo przekopiowany kod z sortowania
+                int SortType = 0; //cześciowo przekopiowany kod z sortowania
 
             if (SelectedSortIndex != 17) { 
                 if (SelectedSortIndex <= 14) { SortType = 3; }
                 if (SelectedSortIndex == 15) { SortType = 2; }
                 if (SelectedSortIndex > 15) { SortType = 1; }
                 Sortuj(SortType, TempUczen, TempNauczyciel, TempPracownik, SelectedSortIndex);
-            }
+                }
+                else
+                {
+
+                }
                 Tab_Item_Szukaj.Visibility = Visibility.Hidden;
                 Tab_Item_Widok.IsSelected = true;
 

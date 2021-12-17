@@ -99,5 +99,11 @@
   <ItemGroup>
     <Resource Include="SuperKot.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Prawo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lewo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

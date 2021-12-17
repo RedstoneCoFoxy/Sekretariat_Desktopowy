@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,7 +24,14 @@ namespace Sekretariat_Desktopowy
         {
             InitializeComponent();
             Update_Widok(TableUczen,TableNauczyciel,TablePracownik);
+            Uczen_RadioTworz.IsChecked = true;
+            //Nauczyciel_RadioTworz.IsChecked = true;
+            Pracownik_RadioTworz.IsChecked = true;
+
         }
+        int WybranyUczen = 0;
+        int WybranyNauczyciel = 0;
+        int WybranyPracwonik = 0;
         //deklaracja obiektów poszcególnych osób
         public class Uczen {
 
@@ -1616,6 +1624,117 @@ namespace Sekretariat_Desktopowy
                 Tab_Item_Rekord.Visibility = Visibility.Visible;
             }
         }
-        
+        void ZaladujRekord_Ucznia_DoEdycji()
+        {
+            Uczen_Imie.Text = TableUczen[WybranyUczen].Imie;
+            Uczen_DrugieImie.Text = TableUczen[WybranyUczen].DrugieImie;
+            Uczen_Nazwisko.Text = TableUczen[WybranyUczen].Nazwisko;
+            Uczen_NazwiskoPaniejskie.Text = TableUczen[WybranyUczen].NazwiskoPaniejskie;
+            Uczen_ImieOjca.Text = TableUczen[WybranyUczen].ImieOjca;
+            Uczen_ImieMatki.Text = TableUczen[WybranyUczen].ImieMatki;
+            Uczen_Pesel.Text = TableUczen[WybranyUczen].Pesel;
+            Uczen_Klasa.Text = TableUczen[WybranyUczen].Klasa;
+            Uczen_Grupy.Text = TableUczen[WybranyUczen].Grupy;
+            UczenWybraneZdjecie = "";
+            if(TableUczen[WybranyUczen].Plec== "Mężczyzna")
+            {
+                Uczen_PlecM.IsChecked = true;
+            }
+            if (TableUczen[WybranyUczen].Plec == "Kobieta")
+            {
+                Uczen_PlecK.IsChecked = true;
+            }
+            DateTime data;
+            data = Convert.ToDateTime(TableUczen[WybranyUczen].DataUrodzenia);
+            Uczen_DataUrodzenia.SelectedDate = data;
+        }
+        private void Uczen_RadioTworz_Checked(object sender, RoutedEventArgs e)
+        {            
+            Uczen_Imie.Text = "Imie";
+            Uczen_DrugieImie.Text = "Drugie Imie";
+            Uczen_Nazwisko.Text = "Nazwisko";
+            Uczen_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
+            Uczen_ImieOjca.Text = "Imie Matki";
+            Uczen_ImieMatki.Text = "Imie Ojca";
+            Uczen_Pesel.Text = "Pesel";
+            Uczen_Klasa.Text = "Klasa";
+            Uczen_Grupy.Text = "Grupy";
+            UczenWybraneZdjecie = "";
+            Uczen_PlecM.IsChecked = false;
+            Uczen_PlecK.IsChecked = false;
+            Uczen_DataUrodzenia.SelectedDate = null;
+            Uczen_Zdjecie.Source = null;
+            Uczen_ErrorLabel.Content = "Tryb tworzenia";
+
+            Uczen_ZapiszRekord.Visibility = Visibility.Hidden;
+            Uczen_StworzRekord.Visibility = Visibility.Visible;
+
+            Uczen_ZmienPrawo.Visibility = Visibility.Hidden;
+            Uczen_ZmienLewo.Visibility = Visibility.Hidden;
+
+        }
+        private void Uczen_ZmienLewo_Click(object sender, RoutedEventArgs e)
+        {
+            WybranyUczen = WybranyUczen - 1;
+            if (WybranyUczen>=TableUczen.Length-1)
+            {
+                WybranyUczen = TableUczen.Length - 1;
+            }
+            if(WybranyUczen <= 0)
+            {
+                WybranyUczen = 0;
+            }
+            ZaladujRekord_Ucznia_DoEdycji();
+        }
+        private void Uczen_ZmienPrawo_Click(object sender, RoutedEventArgs e)
+        {
+            WybranyUczen = WybranyUczen + 1;
+            if (WybranyUczen >= TableUczen.Length - 1)
+            {
+                WybranyUczen = TableUczen.Length - 1;
+            }
+            if (WybranyUczen <= 0)
+            {
+                WybranyUczen = 0;
+            }
+            ZaladujRekord_Ucznia_DoEdycji();
+        }
+
+        private void Uczen_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
+        {
+            if (TableUczen.Length < 1)
+            {
+                Uczen_ErrorLabel.Content = "Brak rekordów uczniów do edytowania";                              
+                Uczen_RadioZapisuj.IsChecked = false;
+            }
+            else
+            {
+                Uczen_ErrorLabel.Content = "Tryb edytowania";
+                Uczen_ZapiszRekord.Visibility = Visibility.Visible;
+                Uczen_StworzRekord.Visibility = Visibility.Hidden;
+
+                Uczen_ZmienPrawo.Visibility= Visibility.Visible;
+                Uczen_ZmienLewo.Visibility = Visibility.Visible;
+                ZaladujRekord_Ucznia_DoEdycji();
+            }
+        }
+        private void Nauczyicel_RadioTworz_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nauczyicel_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Pracownik_RadioTworz_Checked(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Pracownik_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     }

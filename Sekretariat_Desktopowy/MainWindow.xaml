@@ -78,6 +78,12 @@
                             <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 Stwórz
                             </Button>
+                            <Button x:Name="Uczen_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                                Zapisz
+                            </Button>
+                            <RadioButton x:Name="Uczen_RadioTworz" GroupName="Uczen_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" IsChecked="True"/>
+                            <RadioButton x:Name="Uczen_RadioZapisuj" GroupName="Uczen_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord"/>
+
                             <Label x:Name="Uczen_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>
@@ -107,6 +113,12 @@
                             <Button x:Name="Nauczyciel_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Nauczyciel_StworzRekord_Click">
                                 Stwórz
                             </Button>
+                            <Button x:Name="Nauczyciel_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                                Zapisz
+                            </Button>
+                            <RadioButton x:Name="Nauczyicel_RadioTworz" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" IsChecked="True"/>
+                            <RadioButton x:Name="Nauczyicel_RadioZapisuj" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord"/>
+
                             <Label x:Name="Nauczyciel_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>
@@ -135,6 +147,12 @@
                             <Button x:Name="Pracownik_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Pracownik_StworzRekord_Click1">
                                 Stwórz
                             </Button>
+                            <Button x:Name="Pracownik_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                                Zapisz
+                            </Button>
+                            <RadioButton x:Name="Pracownik_RadioTworz" GroupName="Pracwonik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" IsChecked="True"/>
+                            <RadioButton x:Name="Pracownik_RadioZapisuj" GroupName="Pracownik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord"/>
+
                             <Label x:Name="Pracownik_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold"></Label>
                         </Grid>
                     </TabItem>

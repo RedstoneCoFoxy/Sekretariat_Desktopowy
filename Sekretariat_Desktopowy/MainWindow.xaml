@@ -78,7 +78,7 @@
                             <Button x:Name="Uczen_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 Stwórz
                             </Button>
-                            <Button x:Name="Uczen_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                            <Button x:Name="Uczen_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_ZapiszRekord_Click" Visibility="Hidden">
                                 Zapisz
                             </Button>
                             <RadioButton x:Name="Uczen_RadioTworz" GroupName="Uczen_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" Checked="Uczen_RadioTworz_Checked"/>

@@ -735,7 +735,7 @@ namespace Sekretariat_Desktopowy
                 Temp.Klasa = line.Substring(0, line.IndexOf("Ø"));
                 line = line.Remove(0, line.IndexOf("Ø") + 1);
 
-                Temp.Grupy = line.Substring(0, line.Length);
+                Temp.Grupy = line.Substring(0, line.Length-1);
 
                 TempTableUczen[0] = Temp;
                 TableUczen = TableUczen.Concat(TempTableUczen).ToArray();
@@ -784,7 +784,7 @@ namespace Sekretariat_Desktopowy
                 Temp.Zajecia = line.Substring(0, line.IndexOf("Ø"));
                 line = line.Remove(0, line.IndexOf("Ø") + 1);
 
-                Temp.DataZatrudnienia = line.Substring(0, line.Length);
+                Temp.DataZatrudnienia = line.Substring(0, line.Length-1);
 
                 TempTableNauczyciel[0] = Temp;
                 TableNauczyciel = TableNauczyciel.Concat(TempTableNauczyciel).ToArray();
@@ -830,7 +830,7 @@ namespace Sekretariat_Desktopowy
                 Temp.Opis = line.Substring(0, line.IndexOf("Ø"));
                 line = line.Remove(0, line.IndexOf("Ø") + 1);
 
-                Temp.DataZatrudnienia = line.Substring(0, line.Length);
+                Temp.DataZatrudnienia = line.Substring(0, line.Length-1);
 
                 TempTablePracownik[0] = Temp;
                 TablePracownik = TablePracownik.Concat(TempTablePracownik).ToArray();
@@ -1639,6 +1639,7 @@ namespace Sekretariat_Desktopowy
             }
         }
 
+        //Funkcje edycji ucznia
         void ZaladujRekord_Ucznia_DoEdycji()
         {
             Uczen_Imie.Text = TableUczen[WybranyUczen].Imie;
@@ -1732,8 +1733,53 @@ namespace Sekretariat_Desktopowy
                 ZaladujRekord_Ucznia_DoEdycji();
             }
         }
+        private void Uczen_ZapiszRekord_Click(object sender, RoutedEventArgs e)
+        {
+            //przekopiowane z tworzenia ze zmianami
+            Uczen_ErrorLabel.Content = "";
+            if (UczenOkej())//Jesli wszystko dalej okej
+            {
+                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+                Uczen_ErrorLabel.Content = "";
+                Uczen[] TempTableUczen = new Uczen[1];
+                Uczen Temp = new Uczen();
+                string Plec = "";
+                if (Uczen_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
+                if (Uczen_PlecK.IsChecked == true) { Plec = "Kobieta"; };
 
+                string Data;
+                Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Temp.Imie = Uczen_Imie.Text;
+                Temp.Nazwisko = Uczen_Nazwisko.Text;
+                Temp.DataUrodzenia = Data;
+                Temp.Pesel = Uczen_Pesel.Text;
+                Temp.Plec = Plec;
+                Temp.Klasa = Uczen_Klasa.Text;
+                Temp.Zdjecie = UczenWybraneZdjecie;
 
+                if (Uczen_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
+                else { Temp.DrugieImie = Uczen_DrugieImie.Text; };
+
+                if (Uczen_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { Temp.NazwiskoPaniejskie = " "; }
+                else { Temp.NazwiskoPaniejskie = Uczen_NazwiskoPaniejskie.Text; };
+
+                if (Uczen_ImieOjca.Text == "Imie Ojca") { Temp.ImieOjca = " "; }
+                else { Temp.ImieOjca = Uczen_ImieOjca.Text; };
+
+                if (Uczen_ImieMatki.Text == "Imie Matki") { Temp.ImieMatki = " "; }
+                else { Temp.ImieMatki = Uczen_ImieMatki.Text; };
+
+                if (Uczen_Grupy.Text == "Grupy") { Temp.Grupy = " "; }
+                else { Temp.Grupy = Uczen_Grupy.Text; };
+
+                //Zastępowanie wybranego rekordu nowymi wartosciami
+                TableUczen[WybranyUczen] = Temp;
+                Uczen_ErrorLabel.Content = "Pomyślnie zaktualizowano";
+                Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
+            }
+        }
 
 
         private void Nauczyicel_RadioTworz_Checked(object sender, RoutedEventArgs e)

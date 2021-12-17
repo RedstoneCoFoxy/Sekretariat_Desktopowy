@@ -233,11 +233,11 @@ namespace Sekretariat_Desktopowy
                 Tab_Item_Widok_TextBox.Text = Tab_Item_Widok_TextBox.Text + TempPracownik[i].ReturnForPrint();
             }
         }    
-        private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
-        {
 
+        //Funkcje przycisków odpowiedzialne za tworzenia rzeczy do bazy
+        bool UczenOkej()
+        {
             //Jeden Wielki Check czy pola się zgadzają
-            Uczen_ErrorLabel.Content = "";
             bool Check = true;
             if (Uczen_Imie.Text == " " || Uczen_Imie.Text == "Imie")
             {
@@ -257,7 +257,7 @@ namespace Sekretariat_Desktopowy
                 Check = false;
             }
             else { Uczen_DataUrodzenia.Foreground = Brushes.Black; }
-            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length != 11 || Uczen_Pesel.Text.All(char.IsDigit)!=true)
+            if (Uczen_Pesel.Text == " " || Uczen_Pesel.Text == "Pesel" || Uczen_Pesel.Text.Length != 11 || Uczen_Pesel.Text.All(char.IsDigit) != true)
             {
                 Uczen_Pesel.Foreground = Brushes.Red;
                 Check = false;
@@ -270,7 +270,7 @@ namespace Sekretariat_Desktopowy
                 Uczen_PlecK.Foreground = Brushes.Red;
                 Check = false;
             }
-            else {Uczen_PlecM.Foreground = Brushes.Black;Uczen_PlecK.Foreground = Brushes.Black;}
+            else { Uczen_PlecM.Foreground = Brushes.Black; Uczen_PlecK.Foreground = Brushes.Black; }
 
             if (Uczen_Klasa.Text == " " || Uczen_Klasa.Text == "Klasa")
             {
@@ -282,11 +282,15 @@ namespace Sekretariat_Desktopowy
             if (Check == false)
             {
                 Uczen_ErrorLabel.Content = "Brakujące lub niepoprawne dane !!!";
-            }
-            //Jesli Okej to mozna deklarowac zmienną
-            //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
-            if (Check)
+            }           
+            return Check;
+        }
+        private void Uczen_StworzRekord_Click_1(object sender, RoutedEventArgs e)
+        {            
+            Uczen_ErrorLabel.Content = "";           
+            if (UczenOkej())//Jesli Okej to mozna deklarowac zmienną
             {
+                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
                 Uczen_ErrorLabel.Content = "";
                 Uczen[] TempTableUczen = new Uczen[1];
                 Uczen Temp = new Uczen();
@@ -363,10 +367,10 @@ namespace Sekretariat_Desktopowy
                 UczenWybraneZdjecie = selectedFileName;
             }
         }
-        private void Nauczyciel_StworzRekord_Click(object sender, RoutedEventArgs e)
+
+        bool NauczycielOkej()
         {
             //Jeden Wielki Check czy pola się zgadzają
-            Nauczyciel_ErrorLabel.Content = "";
             bool Check = true;
             if (Nauczyciel_Imie.Text == " " || Nauczyciel_Imie.Text == "Imie")
             {
@@ -419,10 +423,15 @@ namespace Sekretariat_Desktopowy
             {
                 Nauczyciel_ErrorLabel.Content = "Brakujące lub niepoprawne dane !!!";
             }
-            //Jesli Okej to mozna deklarowac zmienną
-            //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
-            if (Check)
+            
+            return Check;
+        }
+        private void Nauczyciel_StworzRekord_Click(object sender, RoutedEventArgs e)
+        {           
+            Nauczyciel_ErrorLabel.Content = "";                   
+            if (NauczycielOkej())//Jesli Okej to mozna deklarowac zmienną
             {
+                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
                 Nauczyciel_ErrorLabel.Content = "";
                 Nauczyciel[] TempTableNauczyciel = new Nauczyciel[1];
                 Nauczyciel Temp = new Nauczyciel();
@@ -486,7 +495,6 @@ namespace Sekretariat_Desktopowy
             }
      
         }
-
         private void Nauczyciel_WyborZdjecia_Click(object sender, RoutedEventArgs e)
         {
             //Kod Otwierania Obrazu z poprzedniego programu
@@ -505,10 +513,10 @@ namespace Sekretariat_Desktopowy
                 NauczycielWybraneZdjecie = selectedFileName;
             }
         }
-        private void Pracownik_StworzRekord_Click1(object sender, RoutedEventArgs e)
+
+        bool PracwonikOkej()
         {
             //Jeden Wielki Check czy pola się zgadzają
-            Pracownik_ErrorLabel.Content = "";
             bool Check = true;
             if (Pracownik_Imie.Text == " " || Pracownik_Imie.Text == "Imie")
             {
@@ -567,10 +575,14 @@ namespace Sekretariat_Desktopowy
             {
                 Pracownik_ErrorLabel.Content = "Brakujące lub niepoprawne dane !!!";
             }
-            //Jesli Okej to mozna deklarowac zmienną
-            //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
-            if (Check)
+            return Check;
+        }
+        private void Pracownik_StworzRekord_Click1(object sender, RoutedEventArgs e)
+        {            
+            Pracownik_ErrorLabel.Content = "";
+            if (PracwonikOkej())//Jesli Okej to mozna deklarowac zmienną
             {
+                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
                 Pracownik_ErrorLabel.Content = "";
                 Pracownik[] TempTablePracownik = new Pracownik[1];
                 Pracownik Temp = new Pracownik();
@@ -647,6 +659,8 @@ namespace Sekretariat_Desktopowy
                 PracownikWybraneZdjecie = selectedFileName;
             }
         }
+
+
 
         private void Plik_Zapisz_Click(object sender, RoutedEventArgs e)
         {
@@ -1624,6 +1638,7 @@ namespace Sekretariat_Desktopowy
                 Tab_Item_Rekord.Visibility = Visibility.Visible;
             }
         }
+
         void ZaladujRekord_Ucznia_DoEdycji()
         {
             Uczen_Imie.Text = TableUczen[WybranyUczen].Imie;
@@ -1699,7 +1714,6 @@ namespace Sekretariat_Desktopowy
             }
             ZaladujRekord_Ucznia_DoEdycji();
         }
-
         private void Uczen_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
         {
             if (TableUczen.Length < 1)
@@ -1718,6 +1732,10 @@ namespace Sekretariat_Desktopowy
                 ZaladujRekord_Ucznia_DoEdycji();
             }
         }
+
+
+
+
         private void Nauczyicel_RadioTworz_Checked(object sender, RoutedEventArgs e)
         {
 

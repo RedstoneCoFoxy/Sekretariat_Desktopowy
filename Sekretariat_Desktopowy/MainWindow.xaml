@@ -123,8 +123,8 @@
                             <Button x:Name="Nauczyciel_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
                                 Zapisz
                             </Button>
-                            <RadioButton x:Name="Nauczyicel_RadioTworz" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" IsChecked="True" Checked="Nauczyicel_RadioTworz_Checked"/>
-                            <RadioButton x:Name="Nauczyicel_RadioZapisuj" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord" Checked="Nauczyicel_RadioZapisuj_Checked"/>
+                            <RadioButton x:Name="Nauczyciel_RadioTworz" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" Checked="Nauczyciel_RadioTworz_Checked"/>
+                            <RadioButton x:Name="Nauczyicel_RadioZapisuj" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord" Checked="Nauczyciel_RadioZapisuj_Checked"/>
 
                             <Button Visibility="Hidden" x:Name="Nauczyciel_ZmienLewo" Margin="0,0,456,14" Height="40" Width="40" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 <Image Stretch="Fill" Source="Lewo.png"></Image>
@@ -164,15 +164,17 @@
                             <Button x:Name="Pracownik_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
                                 Zapisz
                             </Button>
-                            <RadioButton x:Name="Pracownik_RadioTworz" GroupName="Pracwonik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" IsChecked="True" Checked="Pracownik_RadioTworz_Checked"/>
+                            <RadioButton x:Name="Pracownik_RadioTworz" GroupName="Pracwonik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" Checked="Pracownik_RadioTworz_Checked"/>
                             <RadioButton x:Name="Pracownik_RadioZapisuj" GroupName="Pracownik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,325,0,-6" Content="Edytuj Rekord" Checked="Pracownik_RadioZapisuj_Checked"/>
 
                             <Button Visibility="Hidden" x:Name="Pracownik_ZmienLewo" Margin="0,0,456,14" Height="40" Width="40" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 <Image Stretch="Fill" Source="Lewo.png"></Image>
                             </Button>
-                            <Button Visibility="Hidden" x:Name="Pracwonik_ZmienPrawo" Margin="0,0,411,14" Height="40" Width="40" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
+                            <Button Visibility="Hidden" x:Name="Pracownik_ZmienPrawo" Margin="0,0,411,14" Height="40" Width="40" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1">
                                 <Image Stretch="Fill" Source="Prawo.png"></Image>
                             </Button>
+                            
+                            
                             
                             <Label x:Name="Pracownik_ErrorLabel" Width="450" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" FontStyle="Italic" FontWeight="Bold" Content=" "></Label>
                         </Grid>

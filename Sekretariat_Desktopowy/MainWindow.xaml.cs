@@ -25,13 +25,13 @@ namespace Sekretariat_Desktopowy
             InitializeComponent();
             Update_Widok(TableUczen,TableNauczyciel,TablePracownik);
             Uczen_RadioTworz.IsChecked = true;
-            //Nauczyciel_RadioTworz.IsChecked = true;
+            Nauczyciel_RadioTworz.IsChecked = true;
             Pracownik_RadioTworz.IsChecked = true;
 
         }
         int WybranyUczen = 0;
         int WybranyNauczyciel = 0;
-        int WybranyPracwonik = 0;
+        int WybranyPracownik = 0;
         //deklaracja obiektów poszcególnych osób
         public class Uczen {
 
@@ -431,7 +431,7 @@ namespace Sekretariat_Desktopowy
             Nauczyciel_ErrorLabel.Content = "";                   
             if (NauczycielOkej())//Jesli Okej to mozna deklarowac zmienną
             {
-                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+                //Deklarowanie tymczasowej zmiennej "Nauczyciel" ktora jest potem dodawana do tablicy i łączona z główną tabelą
                 Nauczyciel_ErrorLabel.Content = "";
                 Nauczyciel[] TempTableNauczyciel = new Nauczyciel[1];
                 Nauczyciel Temp = new Nauczyciel();
@@ -514,7 +514,7 @@ namespace Sekretariat_Desktopowy
             }
         }
 
-        bool PracwonikOkej()
+        bool PracownikOkej()
         {
             //Jeden Wielki Check czy pola się zgadzają
             bool Check = true;
@@ -580,9 +580,9 @@ namespace Sekretariat_Desktopowy
         private void Pracownik_StworzRekord_Click1(object sender, RoutedEventArgs e)
         {            
             Pracownik_ErrorLabel.Content = "";
-            if (PracwonikOkej())//Jesli Okej to mozna deklarowac zmienną
+            if (PracownikOkej())//Jesli Okej to mozna deklarowac zmienną
             {
-                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+                //Deklarowanie tymczasowej zmiennej "Pracownik" ktora jest potem dodawana do tablicy i łączona z główną tabelą
                 Pracownik_ErrorLabel.Content = "";
                 Pracownik[] TempTablePracownik = new Pracownik[1];
                 Pracownik Temp = new Pracownik();
@@ -1781,24 +1781,299 @@ namespace Sekretariat_Desktopowy
             }
         }
 
-
-        private void Nauczyicel_RadioTworz_Checked(object sender, RoutedEventArgs e)
+        //Funkcje edycji nauczyciela
+        void ZaladujRekord_Nauczyciela_DoEdycji()
         {
+            Nauczyciel_Imie.Text = TableNauczyciel[WybranyNauczyciel].Imie;
+            Nauczyciel_DrugieImie.Text = TableNauczyciel[WybranyNauczyciel].DrugieImie;
+            Nauczyciel_Nazwisko.Text = TableNauczyciel[WybranyNauczyciel].Nazwisko;
+            Nauczyciel_NazwiskoPaniejskie.Text = TableNauczyciel[WybranyNauczyciel].NazwiskoPaniejskie;
+            Nauczyciel_ImieOjca.Text = TableNauczyciel[WybranyNauczyciel].ImieOjca;
+            Nauczyciel_ImieMatki.Text = TableNauczyciel[WybranyNauczyciel].ImieMatki;
+            Nauczyciel_Pesel.Text = TableNauczyciel[WybranyNauczyciel].Pesel;
+
+            Nauczyciel_WychowawcaKlasy.Text = TableNauczyciel[WybranyNauczyciel].WychowawcaKlasa;
+            Nauczyciel_PrzedmiotyNauczane.Text = TableNauczyciel[WybranyNauczyciel].PrzedmiotyNauczane;
+            Nauczyciel_Zajecia.Text = TableNauczyciel[WybranyNauczyciel].Zajecia;
+
+            NauczycielWybraneZdjecie = "";
+            if (TableNauczyciel[WybranyNauczyciel].Plec == "Mężczyzna")
+            {
+                Nauczyciel_PlecM.IsChecked = true;
+            }
+            if (TableNauczyciel[WybranyNauczyciel].Plec == "Kobieta")
+            {
+                Nauczyciel_PlecK.IsChecked = true;
+            }
+            DateTime data;
+            data = Convert.ToDateTime(TableNauczyciel[WybranyNauczyciel].DataUrodzenia);
+            Nauczyciel_DataUrodzenia.SelectedDate = data;
+
+            data = Convert.ToDateTime(TableNauczyciel[WybranyUczen].DataZatrudnienia);
+            Nauczyciel_DataZatrudnienia.SelectedDate = data;
+        }
+        private void Nauczyciel_RadioTworz_Checked(object sender, RoutedEventArgs e)
+        {
+            Nauczyciel_Imie.Text = "Imie";
+            Nauczyciel_DrugieImie.Text = "Drugie Imie";
+            Nauczyciel_Nazwisko.Text = "Nazwisko";
+            Nauczyciel_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
+            Nauczyciel_ImieOjca.Text = "Imie Matki";
+            Nauczyciel_ImieMatki.Text = "Imie Ojca";
+            Nauczyciel_Pesel.Text = "Pesel";
+            NauczycielWybraneZdjecie = "";
+            Nauczyciel_Zajecia.Text = "Zajecia z klasami";
+            Nauczyciel_WychowawcaKlasy.Text = "Wychowawca Klasy";
+            Nauczyciel_PrzedmiotyNauczane.Text = "Przedmioty Nauczane";
+            Nauczyciel_DataZatrudnienia.SelectedDate = null;
+            Nauczyciel_PlecM.IsChecked = false;
+            Nauczyciel_PlecK.IsChecked = false;
+            Nauczyciel_DataUrodzenia.SelectedDate = null;
+            Nauczyciel_Zdjecia.Source = null;
+
+            Nauczyciel_ZapiszRekord.Visibility = Visibility.Hidden;
+            Nauczyciel_StworzRekord.Visibility = Visibility.Visible;
+
+            Nauczyciel_ZmienPrawo.Visibility = Visibility.Hidden;
+            Nauczyciel_ZmienLewo.Visibility = Visibility.Hidden;
 
         }
-
-        private void Nauczyicel_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
+        private void Nauczyciel_ZmienLewo_Click(object sender, RoutedEventArgs e)
         {
+            WybranyNauczyciel = WybranyNauczyciel - 1;
+            if (WybranyNauczyciel >= TableNauczyciel.Length - 1)
+            {
+                WybranyNauczyciel = TableNauczyciel.Length - 1;
+            }
+            if (WybranyNauczyciel <= 0)
+            {
+                WybranyNauczyciel = 0;
+            }
+            ZaladujRekord_Nauczyciela_DoEdycji();
+        }
+        private void Nauczyciel_ZmienPrawo_Click(object sender, RoutedEventArgs e)
+        {
+            WybranyNauczyciel = WybranyNauczyciel + 1;
+            if (WybranyNauczyciel >= TableNauczyciel.Length - 1)
+            {
+                WybranyNauczyciel = TableNauczyciel.Length - 1;
+            }
+            if (WybranyNauczyciel <= 0)
+            {
+                WybranyNauczyciel = 0;
+            }
+            ZaladujRekord_Nauczyciela_DoEdycji();
+        }
+        private void Nauczyciel_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
+        {
+            if (TableNauczyciel.Length < 1)
+            {
+                Nauczyciel_ErrorLabel.Content = "Brak rekordów uczniów do edytowania";
+                Nauczyicel_RadioZapisuj.IsChecked = false;
+            }
+            else
+            {
+                Nauczyciel_ErrorLabel.Content = "Tryb edytowania";
+                Nauczyciel_ZapiszRekord.Visibility = Visibility.Visible;
+                Nauczyciel_StworzRekord.Visibility = Visibility.Hidden;
 
+                Nauczyciel_ZmienPrawo.Visibility = Visibility.Visible;
+                Nauczyciel_ZmienLewo.Visibility = Visibility.Visible;
+                ZaladujRekord_Nauczyciela_DoEdycji();
+            }
+        }
+        private void Nauczyciel_ZapiszRekord_Click(object sender, RoutedEventArgs e)
+        {
+            //przekopiowane z tworzenia ze zmianami
+            Nauczyciel_ErrorLabel.Content = "";
+            if (NauczycielOkej())//Jesli wszystko dalej okej
+            {
+                //Deklarowanie tymczasowej zmiennej "Uczen" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+                Nauczyciel_ErrorLabel.Content = "";
+                Nauczyciel[] TempTableNauczyciel = new Nauczyciel[1];
+                Nauczyciel Temp = new Nauczyciel();
+                string Plec = "";
+                if (Nauczyciel_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
+                if (Nauczyciel_PlecK.IsChecked == true) { Plec = "Kobieta"; };
+                string Data;
+                Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Temp.Imie = Nauczyciel_Imie.Text;
+                Temp.Nazwisko = Nauczyciel_Nazwisko.Text;
+                Temp.DataUrodzenia = Data;
+                Temp.Pesel = Nauczyciel_Pesel.Text;
+                Temp.Plec = Plec;
+                Temp.Zdjecie = NauczycielWybraneZdjecie;
+                Temp.PrzedmiotyNauczane = Nauczyciel_PrzedmiotyNauczane.Text;
+                Temp.DataZatrudnienia = Nauczyciel_DataZatrudnienia.ToString().Substring(0, 10);
+
+                if (Nauczyciel_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
+                else { Temp.DrugieImie = Nauczyciel_DrugieImie.Text; };
+
+                if (Nauczyciel_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { Temp.NazwiskoPaniejskie = " "; }
+                else { Temp.NazwiskoPaniejskie = Nauczyciel_NazwiskoPaniejskie.Text; };
+
+                if (Nauczyciel_ImieOjca.Text == "Imie Ojca") { Temp.ImieOjca = " "; }
+                else { Temp.ImieOjca = Nauczyciel_ImieOjca.Text; };
+
+                if (Nauczyciel_ImieMatki.Text == "Imie Matki") { Temp.ImieMatki = " "; }
+                else { Temp.ImieMatki = Nauczyciel_ImieMatki.Text; };
+
+                if (Nauczyciel_WychowawcaKlasy.Text == "Wychowawca Klasy") { Temp.WychowawcaKlasa = " "; }
+                else { Temp.WychowawcaKlasa = Nauczyciel_WychowawcaKlasy.Text; };
+                if (Nauczyciel_Zajecia.Text == "Zajecia z klasami") { Temp.Zajecia = " "; }
+                else { Temp.Zajecia = Nauczyciel_Zajecia.Text; };
+
+                //Zastępowanie wybranego rekordu nowymi wartosciami
+                TableNauczyciel[WybranyNauczyciel] = Temp;
+                Nauczyciel_ErrorLabel.Content = "Pomyślnie zaktualizowano";
+                Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
+            }
+        }
+
+        //Funkcje edycji pracwonika
+        void ZaladujRekord_Pracownika_DoEdycji()
+        {
+            Pracownik_Imie.Text = TablePracownik[WybranyPracownik].Imie;
+            Pracownik_DrugieImie.Text = TablePracownik[WybranyPracownik].DrugieImie;
+            Pracownik_Nazwisko.Text = TablePracownik[WybranyPracownik].Nazwisko;
+            Pracownik_NazwiskoPaniejskie.Text = TablePracownik[WybranyPracownik].NazwiskoPaniejskie;
+            Pracownik_ImieOjca.Text = TablePracownik[WybranyPracownik].ImieOjca;
+            Pracownik_ImieMatki.Text = TablePracownik[WybranyPracownik].ImieMatki;
+            Pracownik_Pesel.Text = TablePracownik[WybranyPracownik].Pesel;
+
+            Pracownik_Opis.Text = TablePracownik[WybranyPracownik].Opis;
+            Pracownik_Etat.Text = TablePracownik[WybranyPracownik].Etat;
+
+            PracownikWybraneZdjecie = "";
+            if (TablePracownik[WybranyPracownik].Plec == "Mężczyzna")
+            {
+                Pracownik_PlecM.IsChecked = true;
+            }
+            if (TablePracownik[WybranyPracownik].Plec == "Kobieta")
+            {
+                Pracownik_PlecK.IsChecked = true;
+            }
+            DateTime data;
+            data = Convert.ToDateTime(TablePracownik[WybranyPracownik].DataUrodzenia);
+            Pracownik_DataUrodzenia.SelectedDate = data;
+
+            data = Convert.ToDateTime(TablePracownik[WybranyPracownik].DataZatrudnienia);
+            Pracownik_DataZatrudnienia.SelectedDate = data;
         }
         private void Pracownik_RadioTworz_Checked(object sender, RoutedEventArgs e)
         {
-            
-        }
+            Pracownik_Imie.Text = "Imie";
+            Pracownik_DrugieImie.Text = "Drugie Imie";
+            Pracownik_Nazwisko.Text = "Nazwisko";
+            Pracownik_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
+            Pracownik_ImieOjca.Text = "Imie Matki";
+            Pracownik_ImieMatki.Text = "Imie Ojca";
+            Pracownik_Pesel.Text = "Pesel";
+            PracownikWybraneZdjecie = "";
+            Pracownik_Opis.Text = "Opis";
+            Pracownik_Etat.Text = "Etat";
+            Pracownik_DataZatrudnienia.SelectedDate = null;
+            Pracownik_PlecM.IsChecked = false;
+            Pracownik_PlecK.IsChecked = false;
+            Pracownik_DataUrodzenia.SelectedDate = null;
+            Pracownik_Zdjecia.Source = null;
 
+            Pracownik_ZapiszRekord.Visibility = Visibility.Hidden;
+            Pracownik_StworzRekord.Visibility = Visibility.Visible;
+
+            Pracownik_ZmienPrawo.Visibility = Visibility.Hidden;
+            Pracownik_ZmienLewo.Visibility = Visibility.Hidden;
+        }
+        private void Pracownik_ZmienLewo_Click(object sender, RoutedEventArgs e)
+        {
+            WybranyPracownik = WybranyPracownik - 1;
+            if (WybranyPracownik >= TablePracownik.Length - 1)
+            {
+                WybranyPracownik = TablePracownik.Length - 1;
+            }
+            if (WybranyPracownik <= 0)
+            {
+                WybranyPracownik = 0;
+            }
+            ZaladujRekord_Pracownika_DoEdycji();
+        }
+        private void Pracownik_ZmienPrawo_Click(object sender, RoutedEventArgs e)
+        {
+            WybranyPracownik = WybranyPracownik + 1;
+            if (WybranyPracownik >= TablePracownik.Length - 1)
+            {
+                WybranyPracownik = TablePracownik.Length - 1;
+            }
+            if (WybranyPracownik <= 0)
+            {
+                WybranyPracownik = 0;
+            }
+            ZaladujRekord_Pracownika_DoEdycji();
+        }
         private void Pracownik_RadioZapisuj_Checked(object sender, RoutedEventArgs e)
         {
+            if (TablePracownik.Length < 1)
+            {
+                Pracownik_ErrorLabel.Content = "Brak rekordów uczniów do edytowania";
+                Pracownik_RadioZapisuj.IsChecked = false;
+            }
+            else
+            {
+                Pracownik_ErrorLabel.Content = "Tryb edytowania";
+                Pracownik_ZapiszRekord.Visibility = Visibility.Visible;
+                Pracownik_StworzRekord.Visibility = Visibility.Hidden;
 
+                Pracownik_ZmienPrawo.Visibility = Visibility.Visible;
+                Pracownik_ZmienLewo.Visibility = Visibility.Visible;
+                ZaladujRekord_Pracownika_DoEdycji();
+            }
+        }
+        private void Pracownik_ZapiszRekord_Click(object sender, RoutedEventArgs e)
+        {
+            //przekopiowane z tworzenia ze zmianami
+            Pracownik_ErrorLabel.Content = "";
+            if (PracownikOkej())//Jesli wszystko dalej okej
+            {
+                //Deklarowanie tymczasowej zmiennej "Pracownik" ktora jest potem dodawana do tablicy i łączona z główną tabelą
+                Pracownik_ErrorLabel.Content = "";
+                Pracownik[] TempTablePracownik = new Pracownik[1];
+                Pracownik Temp = new Pracownik();
+                string Plec = "";
+                if (Pracownik_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
+                if (Pracownik_PlecK.IsChecked == true) { Plec = "Kobieta"; };
+                string Data;
+                Data = Uczen_DataUrodzenia.ToString();
+                Data = Data.Substring(0, 10);
+                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                Temp.Imie = Pracownik_Imie.Text;
+                Temp.Nazwisko = Pracownik_Nazwisko.Text;
+                Temp.DataUrodzenia = Data;
+                Temp.Pesel = Pracownik_Pesel.Text;
+                Temp.Plec = Plec;
+                Temp.Zdjecie = PracownikWybraneZdjecie;
+                Temp.Opis = Pracownik_Opis.Text;
+                Temp.Etat = Pracownik_Etat.Text;
+                Temp.DataZatrudnienia = Pracownik_DataZatrudnienia.ToString().Substring(0, 10);
+
+                if (Pracownik_DrugieImie.Text == "Drugie Imie") { Temp.DrugieImie = " "; }
+                else { Temp.DrugieImie = Pracownik_DrugieImie.Text; };
+
+                if (Pracownik_NazwiskoPaniejskie.Text == "Nazwisko Paniejskie") { Temp.NazwiskoPaniejskie = " "; }
+                else { Temp.NazwiskoPaniejskie = Pracownik_NazwiskoPaniejskie.Text; };
+
+                if (Pracownik_ImieOjca.Text == "Imie Ojca") { Temp.ImieOjca = " "; }
+                else { Temp.ImieOjca = Pracownik_ImieOjca.Text; };
+
+                if (Pracownik_ImieMatki.Text == "Imie Matki") { Temp.ImieMatki = " "; }
+                else { Temp.ImieMatki = Pracownik_ImieMatki.Text; };
+
+                //Zastępowanie wybranego rekordu nowymi wartosciami
+                TablePracownik[WybranyPracownik] = Temp;
+                Pracownik_ErrorLabel.Content = "Pomyślnie zaktualizowano";
+                Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
+            }
         }
     }
     }

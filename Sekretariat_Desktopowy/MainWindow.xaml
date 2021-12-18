@@ -8,6 +8,13 @@
         mc:Ignorable="d"
         Title="Sekretariat" Height="450" Width="1034">
 
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Ctrl" Command="{Binding CommandWczytaj}"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding CommandZapisz}"/>
+        <KeyBinding Key="F2" Command="{Binding CommandSortuj}"/>
+        <KeyBinding Key="F3" Command="{Binding CommandSzukaj}"/>
+        <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding CommandWyjdz}"/>
+    </Window.InputBindings>
     <Grid>
         <TabControl x:Name="MainTab">
             <TabItem x:Name="Tab_Item_Widok" Background="#FFEFE9FF" FontSize="16">
@@ -20,24 +27,29 @@
                             <MenuItem.Header>
                                 Plik
                             </MenuItem.Header>
-                            <MenuItem x:Name="Menu_Plik_Wczytaj" Click="Plik_Wczytaj_Click" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Wczytaj" InputGestureText="Ctrl+O" Click="Plik_Wczytaj_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Wczytaj
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem x:Name="Menu_Plik_Zapisz" Click="Plik_Zapisz_Click" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Zapisz" InputGestureText="Ctrl+S" Click="Plik_Zapisz_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Zapisz
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem x:Name="Menu_Plik_Sortuj" Click="Plik_Sortuj_Click" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Sortuj" InputGestureText="F2" Click="Plik_Sortuj_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Sortuj
                                 </MenuItem.Header>
                             </MenuItem>
-                            <MenuItem x:Name="Menu_Plik_Szukaj" Click="Plik_Szukaj_Click" Background="#FFEFE9FF">
+                            <MenuItem x:Name="Menu_Plik_Szukaj" InputGestureText="F3" Click="Plik_Szukaj_Click" Background="#FFEFE9FF">
                                 <MenuItem.Header>
                                     Szukaj
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="Menu_Plik_Wyjdz" InputGestureText="Ctrl+X" Command="{Binding CommandWyjdz}" Click="Plik_Wyjdz_Click" Background="#FFEFE9FF">
+                                <MenuItem.Header>
+                                    Wyjdź
                                 </MenuItem.Header>
                             </MenuItem>
                         </MenuItem>

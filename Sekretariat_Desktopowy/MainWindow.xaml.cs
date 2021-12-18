@@ -29,6 +29,11 @@ namespace Sekretariat_Desktopowy
             Pracownik_RadioTworz.IsChecked = true;
 
         }
+        public static RoutedCommand MyCommand = new RoutedCommand();
+        //MyCommand.InputGestures.Add(new KeyGesture(Key.S, ModifierKeys.Control));
+        private void MyCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {}
+
         int WybranyUczen = 0;
         int WybranyNauczyciel = 0;
         int WybranyPracownik = 0;
@@ -2075,5 +2080,31 @@ namespace Sekretariat_Desktopowy
                 Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
             }
         }
+
+        private void Plik_Wyjdz_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        public class Wyjdz : ICommand
+        {
+            public event EventHandler CanExecuteChanged;
+            public bool CanExecute(object parameter)
+            {
+                return true;
+            }
+
+            public void Execute(object parameter)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+            public Wyjdz CommandWyjdz
+            {
+                get
+                {
+                    return new Wyjdz();
+                }
+            }
     }
     }

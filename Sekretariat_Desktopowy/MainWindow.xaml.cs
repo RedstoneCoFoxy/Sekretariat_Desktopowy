@@ -963,8 +963,9 @@ namespace Sekretariat_Desktopowy
                 Array.Sort(zmienne); //Gdy znalazlem tą funkcje, wpadłem na rozwiązanie
                 if (Sortuj_RadioMalejaco.IsChecked == true)
                 {
-                    zmienne = zmienne.Reverse().ToArray();
+                    Array.Reverse(zmienne);
                 }
+                string raport = "";
                 Tab_Item_Widok_TextBox.Text = "";
                 for (int U = 0; U < zmienne.Length; U++)
                 {
@@ -972,8 +973,7 @@ namespace Sekretariat_Desktopowy
                     //2 ostatnie znaki, które zostały dodane wczesniej przed sortowaniem
                     //są teraz sprawdzane, i jesli jest U to Uczen, N dla Nauczyciela, P Pracownik
                     //Potem jest sprawdzana lizba, czy pod tym indexem jest wlasciwie ten rekord                      
-                    string String = zmienne[U];
-                    string raport = "";
+                    string String = zmienne[U];                   
                     if (String.EndsWith("U"))
                     {
                         int i = Int32.Parse(String.Substring(String.Length - 2, 1));
@@ -1250,9 +1250,10 @@ namespace Sekretariat_Desktopowy
                                 }
                                 break;
                         }
-                        return raport;
+                        
                     }                   
-                }              
+                }
+                return raport;
             }
             return "";
         }

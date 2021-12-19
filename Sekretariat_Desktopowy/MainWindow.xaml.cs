@@ -340,8 +340,8 @@ namespace Sekretariat_Desktopowy
                 Uczen_DrugieImie.Text = "Drugie Imie";
                 Uczen_Nazwisko.Text = "Nazwisko";
                 Uczen_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-                Uczen_ImieOjca.Text = "Imie Matki";
-                Uczen_ImieMatki.Text = "Imie Ojca";
+                Uczen_ImieOjca.Text = "Imie Ojca";
+                Uczen_ImieMatki.Text = "Imie Matki";
                 Uczen_Pesel.Text = "Pesel";
                 Uczen_Klasa.Text = "Klasa";
                 Uczen_Grupy.Text = "Grupy";
@@ -483,8 +483,8 @@ namespace Sekretariat_Desktopowy
                 Nauczyciel_DrugieImie.Text = "Drugie Imie";
                 Nauczyciel_Nazwisko.Text = "Nazwisko";
                 Nauczyciel_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-                Nauczyciel_ImieOjca.Text = "Imie Matki";
-                Nauczyciel_ImieMatki.Text = "Imie Ojca";
+                Nauczyciel_ImieOjca.Text = "Imie Ojca";
+                Nauczyciel_ImieMatki.Text = "Imie Matki";
                 Nauczyciel_Pesel.Text = "Pesel";
                 NauczycielWybraneZdjecie = "";
                 Nauczyciel_Zajecia.Text = "Zajecia z klasami";
@@ -630,8 +630,8 @@ namespace Sekretariat_Desktopowy
                 Pracownik_DrugieImie.Text = "Drugie Imie";
                 Pracownik_Nazwisko.Text = "Nazwisko";
                 Pracownik_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-                Pracownik_ImieOjca.Text = "Imie Matki";
-                Pracownik_ImieMatki.Text = "Imie Ojca";
+                Pracownik_ImieOjca.Text = "Imie Ojca";
+                Pracownik_ImieMatki.Text = "Imie Matki";
                 Pracownik_Pesel.Text = "Pesel";
                 PracownikWybraneZdjecie = "";
                 Pracownik_Opis.Text = "Opis";
@@ -1675,8 +1675,8 @@ namespace Sekretariat_Desktopowy
             Uczen_DrugieImie.Text = "Drugie Imie";
             Uczen_Nazwisko.Text = "Nazwisko";
             Uczen_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-            Uczen_ImieOjca.Text = "Imie Matki";
-            Uczen_ImieMatki.Text = "Imie Ojca";
+            Uczen_ImieOjca.Text = "Imie Ojca";
+            Uczen_ImieMatki.Text = "Imie Matki";
             Uczen_Pesel.Text = "Pesel";
             Uczen_Klasa.Text = "Klasa";
             Uczen_Grupy.Text = "Grupy";
@@ -1823,8 +1823,8 @@ namespace Sekretariat_Desktopowy
             Nauczyciel_DrugieImie.Text = "Drugie Imie";
             Nauczyciel_Nazwisko.Text = "Nazwisko";
             Nauczyciel_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-            Nauczyciel_ImieOjca.Text = "Imie Matki";
-            Nauczyciel_ImieMatki.Text = "Imie Ojca";
+            Nauczyciel_ImieOjca.Text = "Imie Ojca";
+            Nauczyciel_ImieMatki.Text = "Imie Matki";
             Nauczyciel_Pesel.Text = "Pesel";
             NauczycielWybraneZdjecie = "";
             Nauczyciel_Zajecia.Text = "Zajecia z klasami";
@@ -1973,8 +1973,8 @@ namespace Sekretariat_Desktopowy
             Pracownik_DrugieImie.Text = "Drugie Imie";
             Pracownik_Nazwisko.Text = "Nazwisko";
             Pracownik_NazwiskoPaniejskie.Text = "Nazwisko Paniejskie";
-            Pracownik_ImieOjca.Text = "Imie Matki";
-            Pracownik_ImieMatki.Text = "Imie Ojca";
+            Pracownik_ImieOjca.Text = "Imie Ojca";
+            Pracownik_ImieMatki.Text = "Imie Matki";
             Pracownik_Pesel.Text = "Pesel";
             PracownikWybraneZdjecie = "";
             Pracownik_Opis.Text = "Opis";
@@ -2086,25 +2086,5 @@ namespace Sekretariat_Desktopowy
             Application.Current.Shutdown();
         }
 
-        public class Wyjdz : ICommand
-        {
-            public event EventHandler CanExecuteChanged;
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
-
-            public void Execute(object parameter)
-            {
-                Application.Current.Shutdown();
-            }
-        }
-            public Wyjdz CommandWyjdz
-            {
-                get
-                {
-                    return new Wyjdz();
-                }
-            }
     }
     }

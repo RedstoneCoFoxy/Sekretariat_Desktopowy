@@ -12,7 +12,7 @@
         <KeyBinding Key="O" Modifiers="Ctrl" Command="{Binding CommandWczytaj}"/>
         <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding CommandZapisz}"/>
         <KeyBinding Key="F2" Command="{Binding CommandSortuj}"/>
-        <KeyBinding Key="F3" Command="{Binding CommandSzukaj}"/>
+        <KeyBinding Key="F3" Command="{Binding CommandWyjdz}"/>
         <KeyBinding Key="X" Modifiers="Ctrl" Command="{Binding CommandWyjdz}"/>
     </Window.InputBindings>
     <Grid>
@@ -54,7 +54,7 @@
                             </MenuItem>
                         </MenuItem>
                     </Menu>
-                    <ScrollViewer VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="354" Width="1010" >
+                    <ScrollViewer VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Height="354" Width="1010" FontSize="12" >
                         <TextBlock x:Name="Tab_Item_Widok_TextBox" Height="auto" FontSize="20" Width="auto" VerticalAlignment="Top">
 
                         </TextBlock>
@@ -148,7 +148,7 @@
                             <Button x:Name="Nauczyciel_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Nauczyciel_StworzRekord_Click">
                                 Stwórz
                             </Button>
-                            <Button x:Name="Nauczyciel_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                            <Button x:Name="Nauczyciel_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Nauczyciel_ZapiszRekord_Click" Visibility="Hidden">
                                 Zapisz
                             </Button>
                             <RadioButton x:Name="Nauczyciel_RadioTworz" GroupName="Nauczyicel_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" Checked="Nauczyciel_RadioTworz_Checked"/>
@@ -194,7 +194,7 @@
                             <Button x:Name="Pracownik_StworzRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Pracownik_StworzRekord_Click1">
                                 Stwórz
                             </Button>
-                            <Button x:Name="Pracownik_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Uczen_StworzRekord_Click_1" Visibility="Hidden">
+                            <Button x:Name="Pracownik_ZapiszRekord" Margin="0,0,60,25" Height="25" Width="160" Background="#FFEFE9FF" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="Pracownik_ZapiszRekord_Click" Visibility="Hidden">
                                 Zapisz
                             </Button>
                             <RadioButton x:Name="Pracownik_RadioTworz" GroupName="Pracwonik_EdycjaRadio"  Height="36" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" Margin="621,305,0,0" Content="Twórz Rekord" Checked="Pracownik_RadioTworz_Checked"/>

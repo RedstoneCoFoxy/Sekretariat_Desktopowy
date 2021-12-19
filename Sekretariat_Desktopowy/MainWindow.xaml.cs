@@ -1901,7 +1901,7 @@ namespace Sekretariat_Desktopowy
                 if (Nauczyciel_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
                 if (Nauczyciel_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
-                Data = Uczen_DataUrodzenia.ToString();
+                Data = Nauczyciel_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Nauczyciel_Imie.Text;
@@ -2049,7 +2049,7 @@ namespace Sekretariat_Desktopowy
                 if (Pracownik_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
                 if (Pracownik_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
-                Data = Uczen_DataUrodzenia.ToString();
+                Data = Pracownik_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Pracownik_Imie.Text;

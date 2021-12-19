@@ -77,6 +77,7 @@ namespace Sekretariat_Desktopowy
             public string ReturnForPrint()
             {
                 string Temp = "";
+                Temp = Temp + "U: ";
                 Temp = Temp + "Imie: " + Imie + " ";
                 Temp = Temp + "D.Imie: " + DrugieImie + " ";
                 Temp = Temp + "Nazwisko: " + Nazwisko + " ";
@@ -136,6 +137,7 @@ namespace Sekretariat_Desktopowy
             public string ReturnForPrint()
             {
                 string Temp = "";
+                Temp = Temp + "N: ";
                 Temp = Temp + "Imie: " + Imie + " ";
                 Temp = Temp + "D.Imie: " + DrugieImie + " ";
                 Temp = Temp + "Nazwisko: " + Nazwisko + " ";
@@ -193,6 +195,7 @@ namespace Sekretariat_Desktopowy
             public string ReturnForPrint()
             {
                 string Temp = "";
+                Temp = Temp + "P: ";
                 Temp = Temp + "Imie: " + Imie + " ";
                 Temp = Temp + "D.Imie: " + DrugieImie + " ";
                 Temp = Temp + "Nazwisko: " + Nazwisko + " ";
@@ -444,7 +447,7 @@ namespace Sekretariat_Desktopowy
                 if (Nauczyciel_PlecM.IsChecked == true) { Plec = "Mężczyzna"; };
                 if (Nauczyciel_PlecK.IsChecked == true) { Plec = "Kobieta"; };
                 string Data;
-                Data = Uczen_DataUrodzenia.ToString();
+                Data = Nauczyciel_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
                 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 Temp.Imie = Nauczyciel_Imie.Text;
@@ -1814,7 +1817,7 @@ namespace Sekretariat_Desktopowy
             data = Convert.ToDateTime(TableNauczyciel[WybranyNauczyciel].DataUrodzenia);
             Nauczyciel_DataUrodzenia.SelectedDate = data;
 
-            data = Convert.ToDateTime(TableNauczyciel[WybranyUczen].DataZatrudnienia);
+            data = Convert.ToDateTime(TableNauczyciel[WybranyNauczyciel].DataZatrudnienia);
             Nauczyciel_DataZatrudnienia.SelectedDate = data;
         }
         private void Nauczyciel_RadioTworz_Checked(object sender, RoutedEventArgs e)
@@ -1990,6 +1993,7 @@ namespace Sekretariat_Desktopowy
 
             Pracownik_ZmienPrawo.Visibility = Visibility.Hidden;
             Pracownik_ZmienLewo.Visibility = Visibility.Hidden;
+            Pracownik_RadioZapisuj.IsChecked = false;
         }
         private void Pracownik_ZmienLewo_Click(object sender, RoutedEventArgs e)
         {
@@ -2032,6 +2036,7 @@ namespace Sekretariat_Desktopowy
 
                 Pracownik_ZmienPrawo.Visibility = Visibility.Visible;
                 Pracownik_ZmienLewo.Visibility = Visibility.Visible;
+                Pracownik_RadioTworz.IsChecked = false;
                 ZaladujRekord_Pracownika_DoEdycji();
             }
         }
@@ -2086,5 +2091,9 @@ namespace Sekretariat_Desktopowy
             Application.Current.Shutdown();
         }
 
+        private void Plik_Odswiez_Click(object sender, RoutedEventArgs e)
+        {
+            Update_Widok(TableUczen, TableNauczyciel, TablePracownik);
+        }      
     }
     }

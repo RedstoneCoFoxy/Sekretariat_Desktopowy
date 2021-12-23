@@ -309,7 +309,7 @@ namespace Sekretariat_Desktopowy
                 string Data;
                 Data = Uczen_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
                 Temp.Imie = Uczen_Imie.Text;
                 Temp.Nazwisko = Uczen_Nazwisko.Text;
                 Temp.DataUrodzenia = Data;
@@ -449,7 +449,7 @@ namespace Sekretariat_Desktopowy
                 string Data;
                 Data = Nauczyciel_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
                 Temp.Imie = Nauczyciel_Imie.Text;
                 Temp.Nazwisko = Nauczyciel_Nazwisko.Text;
                 Temp.DataUrodzenia = Data;
@@ -600,7 +600,7 @@ namespace Sekretariat_Desktopowy
                 string Data;
                 Data = Uczen_DataUrodzenia.ToString();
                 Data = Data.Substring(0, 10);
-                //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                
                 Temp.Imie = Pracownik_Imie.Text;
                 Temp.Nazwisko = Pracownik_Nazwisko.Text;
                 Temp.DataUrodzenia = Data;
